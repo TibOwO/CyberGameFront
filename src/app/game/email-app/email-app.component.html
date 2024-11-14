@@ -1,12 +1,14 @@
 <div class="email-container">
-    <h2>Boîte de réception</h2>
-    <ul class="email-list">
-      <li *ngFor="let email of emails" class="email-item" (click)="openEmail(email.id)">
-        <p><strong>De :</strong> {{ email.sender }}</p>
-        <h3>{{ email.subject }}</h3>
-        <p>{{ email.content }}</p>
-      </li>
-    </ul>
-    <button (click)="returnToDesk()" class="btn btn-primary">Retour au bureau</button>
-  </div>
-  
+  <h2>Boîte de réception</h2>
+  <ul class="email-list">
+    <li *ngFor="let email of emails" class="email-item" (click)="openEmail(email.id)">
+      <div class="email-header">
+        <p class="email-sender"><strong>De :</strong> {{ email.sender }}</p>
+        <p class="email-date">{{ email.date | date: 'short' }}</p>
+      </div>
+      <h3 class="email-subject">{{ email.subject }}</h3>
+      <p class="email-content">{{ email.content | slice:0:100 }}...</p>
+    </li>
+  </ul>
+  <button (click)="returnToDesk()" class="btn btn-primary">Retour au bureau</button>
+</div>

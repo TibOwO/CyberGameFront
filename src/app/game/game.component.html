@@ -1,6 +1,21 @@
-<div class="container">
-    <h2>Choisissez une application à explorer :</h2>
-    <button (click)="navigateToApp('email-app')" class="btn btn-primary">Email</button>
-    <button (click)="navigateToApp('phishing')" class="btn btn-primary">Phishing</button>
-    <!-- Add more buttons for other applications -->
+<div class="desktop-container">
+  <h1>Serious Game CyberSecurite</h1>
+  <div class="app-grid">
+    <div class="app-item" (click)="navigateToApp('email-app')">
+      <img src="assets/icons/mail-icon.png" alt="Mail Icon" class="app-icon">
+      <p>Boîte de réception</p>
+    </div>
+    <div class="app-item" (click)="navigateToApp('browser')">
+      <img src="assets/icons/browser-icon.png" alt="Browser Icon" class="app-icon">
+      <p>Navigateur</p>
+    </div>
+    <div class="app-item" (click)="navigateToApp('settings')">
+      <img src="assets/icons/settings-icon.png" alt="Settings Icon" class="app-icon">
+      <p>Paramètres</p>
+    </div>
+    <div class="app-item" (click)="navigateToApp('help')">
+      <img src="assets/icons/help-icon.png" alt="Help Icon" class="app-icon">
+      <p>Aide</p>
+    </div>
   </div>
+</div>

@@ -16,13 +16,14 @@ export class AuthService {
   }
 
   // Simulating login API call
-  login(credentials: { username: string, password: string }): Observable<any> {
+  login(credentials: { username_or_email: string, password: string }): Observable<any> {
     console.log('Logging in user:', credentials);
     // Simulate successful login response after 1 second
     return of({ success: true });
 }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem('auth-token');  // Example check
+    return true;
+    //    return !!localStorage.getItem('auth-token');  // Example check
   }
 }

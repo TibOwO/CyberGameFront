@@ -24,7 +24,7 @@ label {
   color: #495057;
 }
 
-input[type="email"],
+input[type="username_or_email"],
 input[type="password"] {
   width: 100%;
   padding: 10px;
@@ -34,7 +34,7 @@ input[type="password"] {
   box-sizing: border-box;
 }
 
-input[type="email"]:focus,
+input[type="username_or_email"]:focus,
 input[type="password"]:focus {
   outline: none;
   border-color: #80bdff;

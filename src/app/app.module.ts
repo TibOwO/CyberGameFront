@@ -4,13 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { GameComponent } from './game/game.component';
+import { EmailAppComponent } from './game/email-app/email-app.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent, // Assurez-vous d'avoir déclaré le composant d'accueil
-
+    HomeComponent,
+    GameComponent,
+    EmailAppComponent
   ],
   imports: [
     BrowserModule,

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { EmailAppComponent } from './email-app/email-app.component';
 
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [],
+  imports: [EmailAppComponent],
   templateUrl: './game.component.html',
   styleUrl: './game.component.css'
 })

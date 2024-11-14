@@ -20,7 +20,13 @@ export class AuthService {
     console.log('Logging in user:', credentials);
     // Simulate successful login response after 1 second
     return of({ success: true });
-}
+  }
+
+  renvoyerMail(email: string): Observable<any> {
+    console.log('Resending verification email to:', email);
+    // Simulate email resend and return a successful response after 1 second
+    return of({ success: true });
+  }
 
   isAuthenticated(): boolean {
     return true;

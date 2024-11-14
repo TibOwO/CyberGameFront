@@ -1,0 +1,91 @@
+/* Styling for the container */
+.container {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+  }
+  
+  /* Heading styles */
+  h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the form inputs */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-size: 14px;
+    color: #495057;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    box-sizing: border-box;
+  }
+  
+  input[type="text"]:focus {
+    outline: none;
+    border-color: #80bdff;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.25);
+  }
+  
+  /* Button styles */
+  .btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  /* Primary button (for verification) */
+  .btn-primary {
+    background-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Secondary button (for resending the code) */
+  .btn-secondary {
+    background-color: #d34d5a;
+  }
+  
+  .btn-secondary:hover {
+    background-color: #bf2e3c;
+  }
+  
+  /* New button for "Retour à l'inscription" */
+  .btn-danger {
+    background-color: #777f87;  /* Green color */
+  }
+  
+  .btn-danger:hover {
+    background-color: #495057;
+  }
+  
+  /* Error message style */
+  .erreur {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 10px;
+    text-align: center;
+  }
+  

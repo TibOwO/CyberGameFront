@@ -1,0 +1,20 @@
+<div class="email-details">  
+  <div *ngIf="email" class="email-details-container">
+    <h2>{{ email.subject }}</h2>
+    <p><strong>De :</strong> {{ email.sender }}</p>
+    <p><strong>Date :</strong> {{ email.date | date: 'short' }}</p>
+    <p>{{ email.content }}</p>
+  </div>
+  <p *ngIf="!email">Chargement de l'email...</p>
+
+  <div *ngIf="email && email.attachments.length > 0">
+    <h3>Attachments:</h3>
+    <ul>
+      <li *ngFor="let attachment of email.attachments">
+        {{ attachment.filename }} ({{ attachment.size }})
+      </li>
+    </ul>
+  </div>
+
+  <button (click)="returnToInbox()" class="btn btn-secondary">Retour à la boîte de réception</button>
+</div>

@@ -7,27 +7,57 @@ export interface Email {
   subject: string;
   content: string;
   date: string;
+  attachments: Array<{ filename: string; size: string; type: string }>;
+  read: boolean;
+  important: boolean;
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class EmailService {
-  getEmailById(emailId: string) {
-    throw new Error('Method not implemented.');
-  }
+
+  // Simuler une liste d'emails détaillés
+  private emails: Email[] = [
+    {
+      id: 1,
+      sender: 'john.doe@example.com',
+      subject: 'Welcome to Cybersecurity ',
+      content: 'This is a welcome email.',
+      date: '2024-11-14T10:30:00',
+      attachments: [{ filename: 'welcome.pdf', size: '2MB', type: 'application/pdf' }],
+      read: false,
+      important: true
+    },
+    {
+      id: 2,
+      sender: 'phishing@example.com',
+      subject: 'Urgent: Your account is at risk!',
+      content: 'Please click the link to secure your account.',
+      date: '2024-11-13T15:20:00',
+      attachments: [],
+      read: true,
+      important: false
+    }
+    // Ajouter plus d'emails pour le test
+  ];
 
   constructor() { }
 
-  // Simuler quelques emails
-  private emails: Email[] = [
-    { id: 1, sender: 'john.doe@example.com', subject: 'Welcome to Cybersecurity Game', content: 'This is a welcome email.', date: '2024-11-14' },
-    { id: 2, sender: 'phishing@example.com', subject: 'Urgent: Your account is at risk!', content: 'Please click the link to secure your account.', date: '2024-11-13' },
-    { id: 3, sender: 'security@example.com', subject: 'Security Tips', content: 'Here are some tips to keep your account safe.', date: '2024-11-12' },
-  ];
-
-  // Récupérer la liste des emails
+  // Récupérer la liste de tous les emails
   getEmails(): Observable<Email[]> {
     return of(this.emails);
+  }
+
+  // Récupérer un email par son ID
+  getEmailById(emailId: number): Observable<Email | undefined> {
+    const email = this.emails.find(email => email.id === emailId);
+    if (!email) {
+      console.error(`Email with ID ${emailId} not found`);
+    } else {
+      console.log(email);
+    }
+    console.log(email);
+    return of(email);
   }
 }

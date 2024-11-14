@@ -7,7 +7,7 @@
         <p class="email-date">{{ email.date | date: 'short' }}</p>
       </div>
       <h3 class="email-subject">{{ email.subject }}</h3>
-      <p class="email-content">{{ email.content | slice:0:100 }}...</p>
+      <p class="email-content">{{ email.content | slice:0:100 }}...</p> <!-- Limite le texte à 100 caractères -->
     </li>
   </ul>
   <button (click)="returnToDesk()" class="btn btn-primary">Retour au bureau</button>

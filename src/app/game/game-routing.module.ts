@@ -6,6 +6,7 @@ import { LoginComponent } from '../auth/login/login.component';
 import { RegisterComponent } from '../auth/register/register.component';
 import { GameComponent } from './game.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { UniqueEmailComponent } from './email-app/unique-email/unique-email.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -13,6 +14,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'game', component: GameComponent, canActivate: [AuthGuard] },
   { path: 'game/email-app', component: GameComponent, canActivate: [AuthGuard] },
+  { path: 'game/email/:id', component: UniqueEmailComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

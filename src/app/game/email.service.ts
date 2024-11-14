@@ -13,6 +13,9 @@ export interface Email {
   providedIn: 'root'
 })
 export class EmailService {
+  getEmailById(emailId: string) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
 

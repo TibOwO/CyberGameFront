@@ -26,7 +26,7 @@ export class EmailAppComponent implements OnInit {
   }
 
   openEmail(emailId: number) {
-    
+    this.router.navigate([`/game/email/${emailId}`]);
   }
 
   returnToDesk() {

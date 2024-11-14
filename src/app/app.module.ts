@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
 import { EmailAppComponent } from './game/email-app/email-app.component';
-import { VerifMailComponent } from './auth/register/verif-mail/verif-mail.component'; 
 
 
 @NgModule({

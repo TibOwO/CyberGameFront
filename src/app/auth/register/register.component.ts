@@ -33,7 +33,7 @@ export class RegisterComponent {
       (response) => {
         console.log('User registered successfully', response);
         // Navigate to the /game page after successful registration
-        this.router.navigate(['/register/verifmail']);
+        this.router.navigate(['auth/register/verifmail']);
       },
       (error) => {
         console.error('Registration failed', error);

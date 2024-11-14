@@ -1,1 +1,20 @@
-<p>verif-mail works!</p>
+<div class="container">
+    <h2>Vérification de votre e-mail</h2>
+    
+    <p>Un code de vérification a été envoyée à cette adresse mail.</p>
+    
+    <form (ngSubmit)="verifierCode()" #verifForm="ngForm">
+      <div class="form-group">
+        <label for="code">Code de vérification :</label>
+        <input type="text" id="code" class="form-control" 
+               [(ngModel)]="codeVerification" name="code" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Vérifier le code</button>
+    </form>
+  
+    <p *ngIf="messageErreur" class="erreur">{{ messageErreur }}</p>
+  
+    <button (click)="reenvoyerCode()" class="btn btn-secondary">Réenvoyer le code</button>
+    <button (click)="goBack()" class="btn btn-danger">Retour à l'inscription</button>
+</div>
+  

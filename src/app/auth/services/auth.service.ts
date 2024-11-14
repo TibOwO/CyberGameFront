@@ -14,4 +14,15 @@ export class AuthService {
     // Simulate successful registration response after 1 second
     return of({ success: true });
   }
+
+  // Simulating login API call
+  login(credentials: { username: string, password: string }): Observable<any> {
+    console.log('Logging in user:', credentials);
+    // Simulate successful login response after 1 second
+    return of({ success: true });
+}
+
+  isAuthenticated(): boolean {
+    return !!localStorage.getItem('auth-token');  // Example check
+  }
 }

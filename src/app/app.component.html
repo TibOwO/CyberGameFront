@@ -1,9 +1,8 @@
-<h1>Angular Router App</h1>
-<nav>
-  <ul>
-    <li><a routerLink="/auth/login" routerLinkActive="active" ariaCurrentWhenActive="page">Login Component</a></li>
-    <li><a routerLink="/auth/register" routerLinkActive="active" ariaCurrentWhenActive="page">Register Component</a></li>
-  </ul>
-</nav>
-<!-- The routed views render in the <router-outlet>-->
+<div class="homepage-container">
+  <h1>Serious Game CyberSecurite</h1>
+  <div class="button-group">
+    <button routerLink="/auth/login" routerLinkActive="active">Login</button>
+    <button routerLink="/auth/register" routerLinkActive="active">Register</button>
+  </div>
+</div>
 <router-outlet></router-outlet>

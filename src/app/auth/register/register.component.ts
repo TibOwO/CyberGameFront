@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';  // Ensure FormsModule is imported
 import { AuthService } from '../services/auth.service';  // Import the AuthService
 
+
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -32,7 +33,7 @@ export class RegisterComponent {
       (response) => {
         console.log('User registered successfully', response);
         // Navigate to the /game page after successful registration
-        this.router.navigate(['/game']);
+        this.router.navigate(['/register/verifmail']);
       },
       (error) => {
         console.error('Registration failed', error);

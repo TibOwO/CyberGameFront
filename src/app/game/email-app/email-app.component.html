@@ -1,1 +1,12 @@
-<p>email-app works!</p>
+<div class="email-container">
+    <h2>Boîte de réception</h2>
+    <ul class="email-list">
+      <li *ngFor="let email of emails" class="email-item" (click)="openEmail(email.id)">
+        <p><strong>De :</strong> {{ email.sender }}</p>
+        <h3>{{ email.subject }}</h3>
+        <p>{{ email.content }}</p>
+      </li>
+    </ul>
+    <button (click)="returnToDesk()" class="btn btn-primary">Retour au bureau</button>
+  </div>
+  

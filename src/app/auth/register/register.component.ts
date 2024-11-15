@@ -28,17 +28,16 @@ export class RegisterComponent {
       email: this.email,
       password: this.password
     };
-
+  
     this.authService.register(userData).subscribe(
       (response) => {
-        console.log('User registered successfully', response);
-        // Navigate to the /game page after successful registration
+        console.log('Utilisateur enregistré avec succès', response);
         this.router.navigate(['auth/register/verifmail']);
       },
       (error) => {
-        console.error('Registration failed', error);
-        // Handle registration failure (e.g., show error message)
+        console.error('Erreur lors de l’enregistrement', error.error);
+        alert('Erreur : ' + JSON.stringify(error.error));
       }
     );
-  }
+  }  
 }

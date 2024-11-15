@@ -1,35 +1,40 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  // Simulating registration API call
+  apiURL = 'http://127.0.0.1:8000';
+  //call to register
   register(userData: { username: string, email: string, password: string }): Observable<any> {
-    console.log('Registering user:', userData);
-    // Simulate successful registration response after 1 second
-    return of({ success: true });
+    return this.http.post(`${this.apiURL}/register/`, userData); // Slash final
   }
+  
 
   // Simulating login API call
   login(credentials: { username_or_email: string, password: string }): Observable<any> {
-    console.log('Logging in user:', credentials);
-    // Simulate successful login response after 1 second
-    return of({ success: true });
-  }
+    return this.http.post(`${this.apiURL}/login/`, credentials).pipe(
+      tap((response: any) => {
+        if (response.token) {
+          // Enregistrer le token dans le Local Storage
+          localStorage.setItem('token', response.token);
+        }
+      })
+    );
+  }  
 
   renvoyerMail(email: string): Observable<any> {
-    console.log('Resending verification email to:', email);
-    // Simulate email resend and return a successful response after 1 second
-    return of({ success: true });
+    return this.http.post(`${this.apiURL}/renvoyerMail`, { email });
   }
 
   isAuthenticated(): boolean {
-    return true;
-    //    return !!localStorage.getItem('auth-token');  // Example check
+    return !!localStorage.getItem('token');
   }
 }

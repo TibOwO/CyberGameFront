@@ -22,12 +22,12 @@ export class VerifMailComponent {
   }
 
   // Cette méthode permet de vérifier le code de vérification
-  verifierCode() {
+  goToGame() {
     this.router.navigate(['/game']);
   }
 
   // Appel au service AuthService pour renvoyer le code de vérification
-  reenvoyerCode() {
+  renvoyerMail() {
     // Appel à la méthode du service pour renvoyer le code
     this.authService.renvoyerMail(this.email).subscribe(
       (response) => {

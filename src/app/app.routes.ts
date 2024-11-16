@@ -7,6 +7,7 @@ import { AuthGuard } from './auth/auth.guard'; // Adaptez ce chemin si nécessai
 import { EmailAppComponent } from './game/email-app/email-app.component'; // Adaptez ce chemin si nécessaire
 import { VerifMailComponent } from './auth/register/verif-mail/verif-mail.component'; 
 import { UniqueEmailComponent } from './game/email-app/unique-email/unique-email.component'; // Adaptez ce chemin si nécessaire
+import { ConfirmEmailComponent } from './auth/register/confirm-email/confirm-email.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -15,7 +16,8 @@ export const routes: Routes = [
     { path: 'game', component: GameComponent, canActivate: [AuthGuard] },  // Protect game page
     { path: 'game/email-app', component: EmailAppComponent, canActivate: [AuthGuard] },  // Protect email-app page
     { path: 'auth/register/verifmail', component: VerifMailComponent},
-    { path: 'game/email/:emailId', component: UniqueEmailComponent, canActivate: [AuthGuard] }
+    { path: 'game/email/:emailId', component: UniqueEmailComponent, canActivate: [AuthGuard] },
+    { path: 'confirm-email', component: ConfirmEmailComponent }
 
 
 ];

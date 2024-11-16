@@ -1,0 +1,15 @@
+.container {
+    margin-top: 50px;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .alert {
+    margin-top: 20px;
+    padding: 20px;
+  }
+  
+  .btn {
+    margin-top: 15px;
+  }
+  

@@ -1,0 +1,23 @@
+<div class="container text-center">
+    <ng-container *ngIf="isLoading">
+      <p>Validation en cours...</p>
+    </ng-container>
+  
+    <ng-container *ngIf="!isLoading">
+      <div *ngIf="isError" class="alert alert-danger">
+        <h2>Erreur</h2>
+        <p>{{ message }}</p>
+      </div>
+  
+      <div *ngIf="!isError" class="alert alert-success">
+        <h2>Succès</h2>
+        <p>{{ message }}</p>
+        <button class="btn btn-primary" (click)="goToGame()">Accéder au jeu</button>
+      </div>
+      <div *ngIf="isError">
+        <p>Votre lien a peut-être expiré. <a routerLink="/resend-confirmation">Demander un nouveau lien</a></p>
+      </div>
+      
+    </ng-container>
+  </div>
+  

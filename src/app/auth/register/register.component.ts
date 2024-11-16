@@ -31,7 +31,6 @@ export class RegisterComponent {
   
     this.authService.register(userData).subscribe(
       (response) => {
-        console.log('Utilisateur enregistré avec succès', response);
         this.router.navigate(['auth/register/verifmail']);
       },
       (error) => {

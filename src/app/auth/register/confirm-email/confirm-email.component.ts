@@ -45,8 +45,8 @@ export class ConfirmEmailComponent implements OnInit {
   }
 
   // Méthode pour rediriger l'utilisateur vers le jeu
-  goToGame() {
-    this.router.navigate(['/game']);
+  goToLogin() {
+    this.router.navigate(['/auth/login']);
   }
 }
 

@@ -28,17 +28,7 @@ export class VerifMailComponent {
 
   // Appel au service AuthService pour renvoyer le code de vérification
   renvoyerMail() {
-    // Appel à la méthode du service pour renvoyer le code
-    this.authService.renvoyerMail(this.email).subscribe(
-      (response) => {
-        console.log(response.message);  // Affiche un message de succès dans la console
-        this.messageErreur = '';  // Clear error message if successful
-      },
-      (error) => {
-        console.error('Erreur lors du renvoi du mail:', error);
-        this.messageErreur = 'Une erreur est survenue lors du renvoi du code.';  // Message d'erreur en cas d'échec
-      }
-    );
+    return true;
   }
 
   goBack() {

@@ -18,7 +18,7 @@ export class BrowserComponent{
   history: string[] = []; // Historique des URLs
   currentIndex: number = -1; // Index de l'URL courante dans l'historique
 
-  constructor(private router: Router, private  ) {}
+  constructor(private router: Router  ) {}
 
 
   reload(): void {

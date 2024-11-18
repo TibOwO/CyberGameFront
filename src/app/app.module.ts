@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { GameComponent } from './game/game.component';
 import { EmailAppComponent } from './game/email-app/email-app.component';
+import { BrowserComponent } from './game/browser/browser.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './auth/services/auth.service'; // Importer AuthService
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -18,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     HomeComponent,
     GameComponent,
     EmailAppComponent,
+    BrowserComponent,
   ],
   imports: [
     BrowserModule,

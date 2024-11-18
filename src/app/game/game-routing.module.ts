@@ -7,6 +7,9 @@ import { RegisterComponent } from '../auth/register/register.component';
 import { GameComponent } from './game.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { UniqueEmailComponent } from './email-app/unique-email/unique-email.component';
+import { EmailAppComponent } from './email-app/email-app.component';
+import { BrowserComponent } from './browser/browser.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +17,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'game', component: GameComponent, canActivate: [AuthGuard] },
   { path: 'game/email-app', component: GameComponent, canActivate: [AuthGuard] },
-  { path: 'game/email/:id', component: UniqueEmailComponent, canActivate: [AuthGuard] }
+  { path: 'game/email/:id', component: UniqueEmailComponent, canActivate: [AuthGuard] },
+  { path: 'game/browser', component: GameComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

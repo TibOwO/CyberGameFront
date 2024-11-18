@@ -1,0 +1,21 @@
+<div class="browser-container">
+    <!-- Barre d'outils -->
+    <div class="browser-toolbar">
+      <button class="btn" (click)="goBack()">⬅️</button>
+      <button class="btn" (click)="goForward()">➡️</button>
+      <button class="btn" (click)="reload()">🔄</button>
+      <input
+        type="text"
+        class="browser-url"
+        placeholder="Saisir une URL..."
+      />
+      </div>
+  
+    <!-- Contenu du navigateur -->
+    <div class="browser-content">
+      <div *ngIf="!currentUrl" class="empty-browser">
+        <p>Saisissez une URL pour commencer.</p>
+      </div>
+    </div>
+  </div>
+  

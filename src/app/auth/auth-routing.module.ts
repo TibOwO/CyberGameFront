@@ -13,7 +13,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'game', component: GameComponent, canActivate: [AuthGuard] },
+  { path: 'game', component: GameComponent}, //, canActivate: [AuthGuard] },
   { path: 'register/verifmail', component: VerifMailComponent},
   { path: 'confirm-email', component: ConfirmEmailComponent },
 ];

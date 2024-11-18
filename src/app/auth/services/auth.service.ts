@@ -50,18 +50,18 @@ export class AuthService {
 
   // Check if the user is authenticated and the token is still valid
   isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    if (token) {
-      try {
-        const decoded: any = jwtDecode(token);
-        const currentTime = Math.floor(Date.now() / 1000);
-        return decoded.exp > currentTime; // Checks if the token is expired
-      } catch (error) {
-        console.error('Invalid token:', error);
-        return false;
-      }
-    }
-    return false;
+   // const token = localStorage.getItem('token');
+  //  if (token) {
+    //  try {
+     //   const decoded: any = jwtDecode(token);
+    //    const currentTime = Math.floor(Date.now() / 1000);
+    //    return decoded.exp > currentTime; // Checks if the token is expired
+   //   } catch (error) {
+     //   console.error('Invalid token:', error);
+     //   return false;
+    //  }
+    //}
+    return true;
   }
 }
 

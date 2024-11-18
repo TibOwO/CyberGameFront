@@ -8,6 +8,7 @@ import { EmailAppComponent } from './game/email-app/email-app.component'; // Ada
 import { VerifMailComponent } from './auth/register/verif-mail/verif-mail.component'; 
 import { UniqueEmailComponent } from './game/email-app/unique-email/unique-email.component'; // Adaptez ce chemin si nécessaire
 import { ConfirmEmailComponent } from './auth/register/confirm-email/confirm-email.component';
+import { BrowserComponent } from './game/browser/browser.component'; // Adaptez ce chemin si nécessaire
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -17,7 +18,8 @@ export const routes: Routes = [
     { path: 'game/email-app', component: EmailAppComponent, canActivate: [AuthGuard] },  // Protect email-app page
     { path: 'auth/register/verifmail', component: VerifMailComponent},
     { path: 'game/email/:emailId', component: UniqueEmailComponent, canActivate: [AuthGuard] },
-    { path: 'confirm-email', component: ConfirmEmailComponent }
+    { path: 'confirm-email', component: ConfirmEmailComponent },
+    { path: 'game/browser', component: BrowserComponent, }//canActivate: [AuthGuard] }
 
 
 ];

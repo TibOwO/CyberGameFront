@@ -14,7 +14,7 @@ const routes: Routes = [
   { path: 'auth/login', component: LoginComponent },
   { path: 'auth/register', component: RegisterComponent },
   { path: 'game', component: GameComponent, canActivate: [AuthGuard] },
-  { path: 'game/email-app', component: EmailAppComponent },
+  { path: 'game/email-app', component: EmailAppComponent, canActivate: [AuthGuard] },
   { path: 'auth/register/verifmail', component: VerifMailComponent}
 ];
 

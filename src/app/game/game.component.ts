@@ -15,6 +15,7 @@ export class GameComponent {
 
   navigateToApp(appName: string) {
     // Navigate to the selected application's view (e.g., email, phishing)
+    console.log(localStorage.getItem('token'));
     this.router.navigate([`/game/${appName}`]);
   }
 }

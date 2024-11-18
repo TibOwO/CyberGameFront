@@ -12,7 +12,8 @@
       <div *ngIf="!isError" class="alert alert-success">
         <h2>Succès</h2>
         <p>{{ message }}</p>
-        <button class="btn btn-primary" (click)="goToGame()">Accéder au jeu</button>
+        <p>Vous pouvez maintenant vous connecter pour accéder au jeu.</p>
+        <button class="btn btn-primary" (click)="goToLogin()">Se connecter</button>
       </div>
       <div *ngIf="isError">
         <p>Votre lien a peut-être expiré. <a routerLink="/resend-confirmation">Demander un nouveau lien</a></p>

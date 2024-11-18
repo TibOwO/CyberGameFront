@@ -22,8 +22,8 @@ export class VerifMailComponent {
   }
 
   // Cette méthode permet de vérifier le code de vérification
-  goToGame() {
-    this.router.navigate(['/game']);
+  goHome() {
+    this.router.navigate(['/']);
   }
 
   // Appel au service AuthService pour renvoyer le code de vérification

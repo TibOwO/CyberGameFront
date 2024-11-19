@@ -20,7 +20,7 @@ export class BrowserPageComponent {
   ) {}
 
   ngOnInit(): void {
-    const pageId = this.route.snapshot.paramMap.get('id');
+    const pageId = this.route.snapshot.paramMap.get('pageId');
     console.log(pageId);
     if (pageId) {
       this.browserService.getPageById(parseInt(pageId)).subscribe((page) => {

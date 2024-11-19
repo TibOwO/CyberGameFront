@@ -1,21 +1,42 @@
 <div class="browser-container">
-    <!-- Barre d'outils -->
-    <div class="browser-toolbar">
-      <button class="btn" (click)="goBack()">⬅️</button>
-      <button class="btn" (click)="goForward()">➡️</button>
-      <button class="btn" (click)="reload()">🔄</button>
-      <input
-        type="text"
-        class="browser-url"
-        placeholder="Saisir une URL..."
-      />
-      </div>
-  
-    <!-- Contenu du navigateur -->
-    <div class="browser-content">
-      <div *ngIf="!currentUrl" class="empty-browser">
-        <p>Saisissez une URL pour commencer.</p>
-      </div>
+  <!-- Barre de navigation -->
+  <div class="browser-toolbar">
+    <div class="browser-circles">
+      <span class="circle red"></span>
+      <span class="circle yellow"></span>
+      <span class="circle green"></span>
+    </div>
+    <div class="browser-address">
+      <p>{{ addressBar }}</p>
     </div>
   </div>
-  
+
+  <!-- Barre de recherche -->
+  <div class="search-bar">
+    <input
+      type="text"
+      class="search-input"
+      [value]="searchQuery"
+      readonly
+    />
+    <button class="search-btn">🔍</button>
+  </div>
+
+  <!-- Résultats de recherche -->
+  <div class="search-results">
+    <h2>Résultats pour : "{{ searchQuery }}"</h2>
+    <ul class="result-list">
+      <li
+        *ngFor="let result of results"
+        class="result-item"
+        (click)="openPage(result.id)"
+      >
+        <a class="result-link" href="javascript:void(0)">
+          {{ result.link }}
+        </a>
+        <h3 class="result-title">{{ result.title }}</h3>
+        <p class="result-snippet">{{ result.snippet }}</p>
+      </li>
+    </ul>
+  </div>
+</div>

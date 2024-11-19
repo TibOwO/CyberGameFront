@@ -3,49 +3,56 @@ import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 
+interface SearchResult {
+  id: number;
+  title: string;
+  link: string;
+  snippet: string;
+}
+
 @Component({
   selector: 'browser',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './browser.component.html',
-  styleUrl: './browser.component.css'
+  styleUrls: ['./browser.component.css'],
 })
+export class BrowserComponent implements OnInit {
+  results: SearchResult[] = [];
+  searchQuery: string = 'Cybersecurite'; // Texte statique de la barre de recherche
+  addressBar: string = 'https://www.web-search.com/search?q=Cybersecurite'; // Lien affiché en haut
 
+  constructor(private router: Router) {}
 
-
-export class BrowserComponent{
-  currentUrl: string = ''; // URL actuelle
-  history: string[] = []; // Historique des URLs
-  currentIndex: number = -1; // Index de l'URL courante dans l'historique
-
-  constructor(private router: Router  ) {}
-
-
-  reload(): void {
-    // Recharge simplement l'URL actuelle
-    if (this.currentIndex >= 0) {
-      this.currentUrl = this.history[this.currentIndex];
-    }
+  ngOnInit(): void {
+    // Simuler les résultats de recherche
+    this.results = [
+      {
+        id: 1,
+        title: 'Introduction au jeu',
+        link: 'http://intro.com/introduction-au-jeu',
+        snippet:
+          'Introduction au jeu du navigateur',
+      },
+      {
+        id: 2,
+        title: 'Page normal',
+        link: 'http://example.com/exemple',
+        snippet:
+          'Site 2 normal',
+      },
+      {
+        id: 3,
+        title: 'Defung url',
+        link: 'http://example.com/exemple',
+        snippet:
+          'Site 3 defung url',
+      },
+    ];
   }
 
-  goBack(): void {
-    if (this.currentIndex > 0) {
-      this.currentIndex--;
-      this.currentUrl = this.history[this.currentIndex];
-    }
-  }
-
-  goForward(): void {
-    if (this.currentIndex < this.history.length - 1) {
-      this.currentIndex++;
-      this.currentUrl = this.history[this.currentIndex];
-    }
-  }
-
-  private updateHistory(url: string): void {
-    // Met à jour l'historique de navigation
-    this.history = this.history.slice(0, this.currentIndex + 1);
-    this.history.push(url);
-    this.currentIndex = this.history.length - 1;
+  openPage(resultId: number): void {
+    // Simuler la navigation vers une page liée au résultat de recherche
+    this.router.navigate([`/game/page/${resultId}`]);
   }
 }

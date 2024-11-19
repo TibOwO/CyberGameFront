@@ -55,4 +55,8 @@ export class BrowserComponent implements OnInit {
     // Simuler la navigation vers une page liée au résultat de recherche
     this.router.navigate([`/game/page/${resultId}`]);
   }
+
+  returnToDesk() {
+    this.router.navigate([`/game`]);
+  }
 }

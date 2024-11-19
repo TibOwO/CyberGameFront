@@ -1,62 +1,35 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-interface SearchResult {
-  id: number;
-  title: string;
-  link: string;
-  snippet: string;
-}
+import { BrowserService, Page } from '../browser.service'; // Assurez-vous d'utiliser la bonne interface
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'browser',
   standalone: true,
-  imports: [CommonModule],
   templateUrl: './browser.component.html',
   styleUrls: ['./browser.component.css'],
+  imports: [CommonModule],
 })
 export class BrowserComponent implements OnInit {
-  results: SearchResult[] = [];
-  searchQuery: string = 'Cybersecurite'; // Texte statique de la barre de recherche
-  addressBar: string = 'https://www.web-search.com/search?q=Cybersecurite'; // Lien affiché en haut
+  results: Page[] = []; // Renommé en Page[] pour correspondre à l'interface utilisée
+  searchQuery: string = 'Cybersecurite';
+  addressBar: string = 'https://www.web-search.com/search?q=Cybersecurite';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private browserService: BrowserService) {}
 
   ngOnInit(): void {
-    // Simuler les résultats de recherche
-    this.results = [
-      {
-        id: 1,
-        title: 'Introduction au jeu',
-        link: 'http://intro.com/introduction-au-jeu',
-        snippet:
-          'Introduction au jeu du navigateur',
-      },
-      {
-        id: 2,
-        title: 'Page normal',
-        link: 'http://example.com/exemple',
-        snippet:
-          'Site 2 normal',
-      },
-      {
-        id: 3,
-        title: 'Defung url',
-        link: 'http://example.com/exemple',
-        snippet:
-          'Site 3 defung url',
-      },
-    ];
+    // Récupérer les pages depuis le BrowserService
+    this.browserService.getPages().subscribe((pages: Page[]) => {
+      this.results = pages; // Stocker les résultats dans results
+    });
   }
 
-  openPage(resultId: number): void {
-    // Simuler la navigation vers une page liée au résultat de recherche
-    this.router.navigate([`/game/page/${resultId}`]);
+  openPage(pageId: number): void {
+    this.router.navigate([`/game/browser/${pageId}`]); // Navigation vers la page spécifique
   }
 
-  returnToDesk() {
-    this.router.navigate([`/game`]);
+  returnToDesk(): void {
+    this.router.navigate(['/game']); // Navigation vers l'accueil du jeu
   }
 }
+

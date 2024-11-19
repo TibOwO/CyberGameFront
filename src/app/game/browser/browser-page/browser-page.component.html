@@ -1,0 +1,32 @@
+<div class="browser-container">
+    <!-- Barre de navigation -->
+    <div class="browser-toolbar">
+      <div class="browser-circles">
+        <span class="circle red" (click)="returnToBrowser()"></span>
+        <span class="circle yellow"></span>
+        <span class="circle green"></span>
+      </div>
+      <div class="browser-address">
+        <p>{{ page?.link || 'Chargement...' }}</p>
+      </div>
+    </div>
+  
+    <!-- Contenu principal -->
+    <div *ngIf="page; else loading" class="page-details">
+      <div class="page-details-container">
+        <h2>{{ page.title }}</h2>
+        <p><strong>Adresse URL :</strong> <a [href]="page.link" target="_blank">{{ page.link }}</a></p>
+        <p><strong>Description :</strong> {{ page.snippet }}</p>
+      </div>
+      <div *ngIf="page.link">
+        <h3>Ouvrir la page :</h3>
+        <a [href]="page.link" target="_blank" class="visit-link">Visiter cette page</a>
+      </div>
+      <button (click)="returnToBrowser()" class="btn btn-secondary">Retour à la liste des pages</button>
+    </div>
+  
+    <ng-template #loading>
+      <p class="loading-text">Chargement de la page...</p>
+    </ng-template>
+  </div>
+  

@@ -9,6 +9,7 @@ import { VerifMailComponent } from './auth/register/verif-mail/verif-mail.compon
 import { UniqueEmailComponent } from './game/email-app/unique-email/unique-email.component'; // Adaptez ce chemin si nécessaire
 import { ConfirmEmailComponent } from './auth/register/confirm-email/confirm-email.component';
 import { BrowserComponent } from './game/browser/browser.component'; // Adaptez ce chemin si nécessaire
+import { BrowserPageComponent } from './game/browser/browser-page/browser-page.component';  
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -19,7 +20,8 @@ export const routes: Routes = [
     { path: 'auth/register/verifmail', component: VerifMailComponent},
     { path: 'game/email/:emailId', component: UniqueEmailComponent, canActivate: [AuthGuard] },
     { path: 'confirm-email', component: ConfirmEmailComponent },
-    { path: 'game/browser', component: BrowserComponent, }//canActivate: [AuthGuard] }
+    { path: 'game/browser', component: BrowserComponent },//canActivate: [AuthGuard] }
+    { path: 'game/browser/:pageId', component: BrowserPageComponent }
 
 
 ];

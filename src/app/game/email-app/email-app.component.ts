@@ -20,7 +20,7 @@ export class EmailAppComponent implements OnInit {
 
   ngOnInit(): void {
     // Récupérer les emails au chargement du composant
-    this.emailService.getEmails().subscribe((emails) => {
+    this.emailService.getEmails().subscribe((emails: Email[]) => {
       this.emails = emails;
     });
   }

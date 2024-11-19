@@ -40,11 +40,16 @@ export class BrowserService {
     return of(this.pages);
   }
 
-  getPageById(id: number): Observable<Page | undefined> {
-    const page = this.pages.find((p) => p.id === id);
-    console.log('Page trouvée pour l’ID', id, ':', page); // Log pour vérifier la donnée
-    return of(page);
-  }
+  getPageById(browserId: number): Observable<Page | undefined> {
+    const page = this.pages.find((p) => p.id === browserId);
+    if (!page) {
+        console.error(`Email with ID ${browserId} not found`);
+      } else {
+        console.log(page);
+      }
+      console.log(page);
+      return of(page);
+    }
   
 }
 

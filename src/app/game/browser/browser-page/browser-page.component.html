@@ -7,7 +7,9 @@
         <span class="circle green"></span>
       </div>
       <div class="browser-address">
-        <p>{{ page?.link || 'Chargement...' }}</p>
+        <div *ngIf="page">
+            <p>{{ page.link }}</p>
+        </div>
       </div>
     </div>
   
@@ -15,12 +17,8 @@
     <div *ngIf="page; else loading" class="page-details">
       <div class="page-details-container">
         <h2>{{ page.title }}</h2>
-        <p><strong>Adresse URL :</strong> <a [href]="page.link" target="_blank">{{ page.link }}</a></p>
+        <p><strong>Adresse URL :</strong> {{ page.link }}</p>
         <p><strong>Description :</strong> {{ page.snippet }}</p>
-      </div>
-      <div *ngIf="page.link">
-        <h3>Ouvrir la page :</h3>
-        <a [href]="page.link" target="_blank" class="visit-link">Visiter cette page</a>
       </div>
       <button (click)="returnToBrowser()" class="btn btn-secondary">Retour à la liste des pages</button>
     </div>

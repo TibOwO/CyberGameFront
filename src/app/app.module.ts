@@ -9,6 +9,7 @@ import { EmailAppComponent } from './game/email-app/email-app.component';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './auth/services/auth.service'; // Importer AuthService
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
  
 
 
@@ -22,6 +23,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule, // Importer le module de routage principal
+    HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  // Ajouter l'intercepteur

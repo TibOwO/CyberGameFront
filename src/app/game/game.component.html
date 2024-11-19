@@ -1,6 +1,18 @@
 <div class="desktop-container">
   <h1>Serious Game CyberSecurite</h1>
-  <div class="app-grid">
+
+  <!-- Afficher les informations utilisateur -->
+  <div *ngIf="loading" class="loading-spinner">Chargement des informations...</div>
+  <div *ngIf="!loading && userInfo" class="user-info">
+    <h3>{{ userInfo.name }}</h3>
+    <p>{{ userInfo.email }}</p>
+  </div>
+  <div *ngIf="!loading && errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Section des applications -->
+  <div class="app-grid" *ngIf="!loading && !errorMessage">
     <div class="app-item" (click)="navigateToApp('email-app')">
       <img src="assets/icons/mail-icon.png" alt="Mail Icon" class="app-icon">
       <p>Boîte de réception</p>
@@ -19,4 +31,3 @@
     </div>
   </div>
 </div>
-

@@ -1,9 +1,15 @@
 <div class="container login-container">
   <h2>Connexion</h2>
+  
+  <!-- Affichage du message d'erreur -->
+  <div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+  </div>
+  
   <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
     <div class="form-group">
       <label for="username_or_email">Nom d'utilisateur ou Email :</label>
-      <input type="username_or_email" id="email" class="form-control"
+      <input type="text" id="username_or_email" class="form-control"
              placeholder="Entrez votre nom d'utilisateur ou l'email"
              [(ngModel)]="username_or_email" name="username_or_email" required>
     </div>
@@ -15,5 +21,6 @@
     </div>
     <button type="submit" class="btn btn-primary" [disabled]="!loginForm.form.valid">Se connecter</button>
   </form>
+
   <button (click)="navigateToRegister()" class="btn btn-secondary">S'inscrire</button>
 </div>

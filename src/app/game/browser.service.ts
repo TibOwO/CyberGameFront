@@ -15,20 +15,20 @@ export class BrowserService {
   private pages: Page[] = [
     {
         id: 1,
-        title: 'Introduction au jeu',
-        link: 'http://intro.com/introduction-au-jeu',
-        snippet: 'Introduction au jeu du navigateur',
+        title: 'Introduction au jeu du navigateur',
+        link: 'https://intro.com/introduction-au-jeu',
+        snippet: 'Introduction au jeu du navigateur et explication des règles',
       },
       {
         id: 2,
         title: 'Page normale',
-        link: 'http://example.com/exemple',
+        link: 'https://example.com/exemple',
         snippet: 'Site 2 normal',
       },
       {
         id: 3,
         title: 'Defung URL',
-        link: 'http://example.com/exemple',
+        link: 'https://example.com/exemple',
         snippet: 'Site 3 defung url',
       },
     

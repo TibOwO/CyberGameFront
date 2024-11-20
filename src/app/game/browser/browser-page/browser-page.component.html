@@ -43,19 +43,15 @@
     </div>
 
     <!-- Contenu spécifique pour la page 2 -->
-    <div *ngIf="page.id === 2" class="details-page">
-      <h2>{{ page.title }}</h2>
-      <p>Cette page est un site de vente en ligne :</p>
-      <ul>
-        <li><strong>Adresse :</strong> <a [href]="page.link" target="_blank">{{ page.link }}</a></li>
-        <li>{{ page.snippet }}</li>
-      </ul>
-      <p>
-        Votre tâche : Identifiez si ce site est conforme aux normes légales.
-      </p>
-      <button (click)="returnToBrowser()" class="btn btn-secondary">
-        Retourner
-      </button>
+    <div *ngIf="page.id === 2">
+      <iframe
+        src="assets/browserpic/Une-Rencontre-Chanceuse.pdf"
+        class="pdf-iframe"
+        frameborder="0"
+      ></iframe>
+      <div class="pdf-footer">
+        <button (click)="markAsSafe()" class="btn btn-success">Page sûre</button>
+      </div>
     </div>
 
     <!-- Contenu spécifique pour la page 3 -->

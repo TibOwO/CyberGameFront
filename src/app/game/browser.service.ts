@@ -21,9 +21,9 @@ export class BrowserService {
       },
       {
         id: 2,
-        title: 'Page normale',
-        link: 'https://example.com/exemple',
-        snippet: 'Site 2 normal',
+        title: 'Une rencontre chanceuse',
+        link: 'https://www.blog-poeme.com/poeme-rencontre-chanceuse.pdf',
+        snippet: 'poème sur une rencontre chanceuse signée d`un y',
       },
       {
         id: 3,

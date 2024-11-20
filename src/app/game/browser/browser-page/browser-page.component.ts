@@ -32,4 +32,8 @@ export class BrowserPageComponent {
   returnToBrowser(): void {
     this.router.navigate(['/game/browser']);
   }
+
+  markAsSafe(): void {
+    console.log('Page marquée comme sûre :', true);
+  }
 }

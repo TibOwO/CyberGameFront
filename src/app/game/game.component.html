@@ -4,8 +4,7 @@
   <!-- Afficher les informations utilisateur -->
   <div *ngIf="loading" class="loading-spinner">Chargement des informations...</div>
   <div *ngIf="!loading && userInfo" class="user-info">
-    <h3>{{ userInfo.name }}</h3>
-    <p>{{ userInfo.email }}</p>
+    <h3>Bienvenue {{ userInfo.username }}</h3>
   </div>
   <div *ngIf="!loading && errorMessage" class="error-message">
     {{ errorMessage }}

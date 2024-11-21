@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reset-password',
@@ -14,7 +15,7 @@ import { AuthService } from '../services/auth.service';
 export class ResetPasswordComponent {
   resetPasswordForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
     this.resetPasswordForm = this.fb.group(
       {
         email: ['', [Validators.required, Validators.email]],
@@ -39,6 +40,7 @@ export class ResetPasswordComponent {
       this.authService.resetPassword(email, password).subscribe(
         (response) => {
           alert('Mot de passe réinitialisé avec succès.');
+          this.router.navigate(['/auth/login']);
         },
         (error) => {
           console.log('Erreur lors de la réinitialisation du mot de passe', error);

@@ -10,6 +10,7 @@ import { EmailAppComponent } from './game/email-app/email-app.component';
 import { VerifMailComponent } from './auth/register/verif-mail/verif-mail.component'; 
 import { BrowserComponent } from './game/browser/browser.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,9 +20,8 @@ const routes: Routes = [
   { path: 'game/email-app', component: EmailAppComponent, canActivate: [AuthGuard] },
   { path: 'auth/register/verifmail', component: VerifMailComponent},
   { path: 'auth/forgot-password', component: ForgotPasswordComponent },
-  { path: 'game/browser', component: BrowserComponent}
-
-  
+  { path: 'game/browser', component: BrowserComponent},
+  { path: 'auth/reset-password', component: ResetPasswordComponent}
 ];
 
 @NgModule({

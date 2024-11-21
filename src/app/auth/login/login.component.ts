@@ -34,7 +34,7 @@ export class LoginComponent {
         this.router.navigate(['/game']);  // Redirige vers la page du jeu après une connexion réussie
       },
       (error) => {
-        console.error('Login failed', error);
+        console.log('Login failed', error);
 
         // Gestion des erreurs
         if (error.status === 401) {

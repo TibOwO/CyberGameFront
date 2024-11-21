@@ -24,6 +24,4 @@ export const routes: Routes = [
     { path: 'game/browser', component: BrowserComponent, }, //canActivate: [AuthGuard] }
     { path: 'auth/forgot-password', component: ForgotPasswordComponent },
     { path: 'auth/reset-password', component: ResetPasswordComponent }
-
-
 ];

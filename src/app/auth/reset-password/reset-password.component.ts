@@ -34,6 +34,7 @@ export class ResetPasswordComponent {
   onSubmit() {
     if (this.resetPasswordForm.valid) {
       const { email, password } = this.resetPasswordForm.value;
+      //console.log(this.resetPasswordForm.value);
       console.log('Réinitialisation du mot de passe pour:', email, "password:", password);
       this.authService.resetPassword(email, password).subscribe(
         (response) => {

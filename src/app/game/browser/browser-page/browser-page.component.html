@@ -50,21 +50,117 @@
         frameborder="0"
       ></iframe>
       <div class="pdf-footer">
-        <button (click)="markAsSafe()" class="btn btn-success">Page sûre</button>
+        <button (click)="addPoint()" class="btn btn-success">Page sûre</button>
       </div>
     </div>
 
     <!-- Contenu spécifique pour la page 3 -->
-    <div *ngIf="page.id === 3" class="advanced-page">
-      <h2>{{ page.title }}</h2>
-      <p>Bienvenue sur une page présentant des éléments douteux.</p>
-      <blockquote>{{ page.snippet }}</blockquote>
-      <p>
-        Votre tâche : Vérifiez si le contenu de cette page présente des risques
-        ou des anomalies.
-      </p>
-      <a [href]="page.link" target="_blank" class="visit-link">Analyser cette page</a>
+    <div *ngIf="page.id === 3" class="product-page">
+      <!-- Bande de navigation -->
+      <div class="product-header">
+        <h1 class="brand-name">SneakerZone</h1>
+        <nav class="product-nav">
+          <ul>
+            <li>Accueil</li>
+            <li>Produits</li>
+            <li>Contact</li>
+            <li>À propos</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Contenu de la page -->
+      <div class="product-content">
+        <!-- Image du produit -->
+        <div class="product-image">
+          <img src="assets/browserpic/chaussure_page3.png" alt="Chaussure de sport" />
+        </div>
+
+        <!-- Description du produit -->
+        <div class="product-description">
+          <h2>Paire de Sneakers Édition Limitée</h2>
+          <p>
+            Découvrez nos sneakers édition limitée, parfaites pour un style urbain et moderne. 
+            Confortables, résistantes, et adaptées à toutes vos aventures quotidiennes.
+          </p>
+          <ul>
+            <li><strong>Marque :</strong> SneakerZone</li>
+            <li><strong>Prix :</strong> 120,00 €</li>
+            <li><strong>Disponibilité :</strong> En stock</li>
+          </ul>
+          <button class="btn btn-ajoutpanier">Ajouter au panier</button>
+        <!-- Gamme de tailles -->
+        <div class="product-sizes">
+          <p><strong>Tailles disponibles :</strong></p>
+          <ul>
+            <li>41</li>
+            <li>42</li>
+            <li>43</li>
+            <li>44</li>
+          </ul>
+        </div>
+      </div>
     </div>
+  
+
+    <!-- Avis -->
+    <div class="product-reviews">
+      <h3>Ce que disent nos clients :</h3>
+      <ul>
+        <li>
+          <div class="review">
+            <p>⭐ Livraison rapide et soignée !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Produit conforme à la description, qualité au rendez-vous.</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Service client très réactif, je recommande !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Très satisfait, je rachèterai chez SneakerZone sans hésiter !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <p class="mentions_legales" (click)="addPoint()">Mentions Legales</p>
+  </div>
+
+
 
     <!-- Contenu générique pour toutes les autres pages -->
     <div *ngIf="page.id !== 1 && page.id !== 2 && page.id !== 3" class="generic-page">

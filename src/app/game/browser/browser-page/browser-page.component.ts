@@ -33,7 +33,7 @@ export class BrowserPageComponent {
     this.router.navigate(['/game/browser']);
   }
 
-  markAsSafe(): void {
-    console.log('Page marquée comme sûre :', true);
+  addPoint(): void {
+    console.log('Point ajouté');
   }
 }

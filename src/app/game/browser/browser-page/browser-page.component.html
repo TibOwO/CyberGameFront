@@ -1,0 +1,181 @@
+<div class="browser-container">
+  <!-- Barre de navigation -->
+  <div class="browser-toolbar">
+    <div class="browser-circles">
+      <span class="circle red" (click)="returnToBrowser()"></span>
+      <span class="circle yellow"></span>
+      <span class="circle green"></span>
+    </div>
+    <div class="browser-address">
+      <p>{{ page?.link || 'Chargement...' }}</p>
+    </div>
+  </div>
+
+  <!-- Contenu principal -->
+  <div *ngIf="page; else notFound" class="page-details">
+    <!-- Contenu spécifique pour la page 1 -->
+    <div *ngIf="page.id === 1" class="intro-page">
+      <h1> <strong> Introduction au jeu du navigateur </strong></h1>
+      <p>
+        Bienvenue dans le jeu du navigateur !
+        Votre mission consiste à parcourir plusieurs sites web simulés et à
+        identifier les anomalies. Par exemple :
+      </p>
+      <ul>
+        <li>L'absence de mentions légales sur un site de vente en ligne.</li>
+        <li>Des liens cassés suspects.</li>
+        <li>Des formulaires incomplets ou douteux.</li>
+      </ul>
+      <p> Pour cela, il faudra faire le tri entre les pages normales
+        et celles qui présentent des risques pour la sécurité.
+        Un bouton en bas de page vous permettra de signaler les pages sures lorsque
+        vous les aurez identifiées comme telles.
+        Sinon, il faudra cliquer sur l'anomalie pour la signaler.
+      </p>
+      <p>
+        Faites attention aux détails et essayez de trouver toutes les anomalies
+        pour devenir un expert en cybersécurité !
+      </p>
+    
+      <button (click)="returnToBrowser()" class="btn btn-secondary">
+        Revenir à la liste des pages
+      </button>
+    </div>
+
+    <!-- Contenu spécifique pour la page 2 -->
+    <div *ngIf="page.id === 2">
+      <iframe
+        src="assets/browserpic/Une-Rencontre-Chanceuse.pdf"
+        class="pdf-iframe"
+        frameborder="0"
+      ></iframe>
+      <div class="pdf-footer">
+        <button (click)="addPoint()" class="btn btn-success">Page sûre</button>
+      </div>
+    </div>
+
+    <!-- Contenu spécifique pour la page 3 -->
+    <div *ngIf="page.id === 3" class="product-page">
+      <!-- Bande de navigation -->
+      <div class="product-header">
+        <h1 class="brand-name">SneakerZone</h1>
+        <nav class="product-nav">
+          <ul>
+            <li>Accueil</li>
+            <li>Produits</li>
+            <li>Contact</li>
+            <li>À propos</li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- Contenu de la page -->
+      <div class="product-content">
+        <!-- Image du produit -->
+        <div class="product-image">
+          <img src="assets/browserpic/chaussure_page3.png" alt="Chaussure de sport" />
+        </div>
+
+        <!-- Description du produit -->
+        <div class="product-description">
+          <h2>Paire de Sneakers Édition Limitée</h2>
+          <p>
+            Découvrez nos sneakers édition limitée, parfaites pour un style urbain et moderne. 
+            Confortables, résistantes, et adaptées à toutes vos aventures quotidiennes.
+          </p>
+          <ul>
+            <li><strong>Marque :</strong> SneakerZone</li>
+            <li><strong>Prix :</strong> 120,00 €</li>
+            <li><strong>Disponibilité :</strong> En stock</li>
+          </ul>
+          <button class="btn btn-ajoutpanier">Ajouter au panier</button>
+        <!-- Gamme de tailles -->
+        <div class="product-sizes">
+          <p><strong>Tailles disponibles :</strong></p>
+          <ul>
+            <li>41</li>
+            <li>42</li>
+            <li>43</li>
+            <li>44</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  
+
+    <!-- Avis -->
+    <div class="product-reviews">
+      <h3>Ce que disent nos clients :</h3>
+      <ul>
+        <li>
+          <div class="review">
+            <p>⭐ Livraison rapide et soignée !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Produit conforme à la description, qualité au rendez-vous.</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Service client très réactif, je recommande !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="review">
+            <p>⭐ Très satisfait, je rachèterai chez SneakerZone sans hésiter !</p>
+            <div class="rating">
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+              <span class="green-circle"></span>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <p class="mentions_legales" (click)="addPoint()">Mentions Legales</p>
+  </div>
+
+
+
+    <!-- Contenu générique pour toutes les autres pages -->
+    <div *ngIf="page.id !== 1 && page.id !== 2 && page.id !== 3" class="generic-page">
+      <h2>{{ page.title }}</h2>
+      <p>{{ page.snippet }}</p>
+      <a [href]="page.link" target="_blank" class="visit-link">Explorer cette page</a>
+      <button (click)="returnToBrowser()" class="btn btn-secondary">
+        Retourner à la liste
+      </button>
+    </div>
+  </div>
+
+  <!-- Contenu à afficher si la page n'existe pas -->
+  <ng-template #notFound>
+    <p class="error-text">La page demandée est introuvable.</p>
+    <button (click)="returnToBrowser()" class="btn btn-secondary">Retour</button>
+  </ng-template>
+</div>

@@ -12,6 +12,7 @@ import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.
 import { BrowserComponent } from './game/browser/browser.component'; // Adaptez ce chemin si nécessaire
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { PasswordCheckerComponent } from './game/password-checker/password-checker.component';
+import { BrowserPageComponent } from './game/browser/browser-page/browser-page.component';  
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -26,4 +27,7 @@ export const routes: Routes = [
     { path: 'auth/forgot-password', component: ForgotPasswordComponent },
     { path: 'auth/reset-password', component: ResetPasswordComponent },
     { path: 'game/password-checker', component: PasswordCheckerComponent, canActivate: [AuthGuard] },
+    { path: 'game/browser/:pageId', component: BrowserPageComponent }
+
+
 ];

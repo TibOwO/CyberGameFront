@@ -68,11 +68,8 @@ export class AuthService {
     return this.http.post(`${this.apiURL}/forgot-password/`, { email });
   }
   
-  resetPassword(email: string, password: string) {
-    return this.http.post(`${this.apiURL}/reset-password/`, {
-      email: email, // ou remplacez par username si le back-end nécessite un username
-      new_password: password, // correspond au champ attendu par le serveur
-    });
+  resetPassword(uidb64: string, token: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiURL}/reset-password/`, { uidb64, token, new_password: password });
   }
 }
 

@@ -11,6 +11,7 @@ import { ConfirmEmailComponent } from './auth/register/confirm-email/confirm-ema
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component'; // Adaptez ce chemin si nécessaire
 import { BrowserComponent } from './game/browser/browser.component'; // Adaptez ce chemin si nécessaire
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { PasswordCheckerComponent } from './game/password-checker/password-checker.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -21,7 +22,8 @@ export const routes: Routes = [
     { path: 'auth/register/verifmail', component: VerifMailComponent},
     { path: 'game/email/:emailId', component: UniqueEmailComponent, canActivate: [AuthGuard] },
     { path: 'confirm-email', component: ConfirmEmailComponent },
-    { path: 'game/browser', component: BrowserComponent, }, //canActivate: [AuthGuard] }
+    { path: 'game/browser', component: BrowserComponent, canActivate: [AuthGuard] },
     { path: 'auth/forgot-password', component: ForgotPasswordComponent },
-    { path: 'auth/reset-password', component: ResetPasswordComponent }
+    { path: 'auth/reset-password', component: ResetPasswordComponent },
+    { path: 'game/password-checker', component: PasswordCheckerComponent, canActivate: [AuthGuard] },
 ];

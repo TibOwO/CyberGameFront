@@ -21,6 +21,7 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     this.fetchUserInfo();
+    console.log("token", localStorage.getItem('token'));
   }
 
   fetchUserInfo() {

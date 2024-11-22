@@ -14,11 +14,13 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot
   ): boolean {
     if (this.authService.isAuthenticated()) {
-      return true;
+      return true; // Accès autorisé
     } else {
       localStorage.removeItem('token'); // Supprimez les tokens invalides
-      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
-      return false;
+      localStorage.removeItem('refresh_token'); // Supprimez également le refresh token
+      this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } }); // Redirection
+      return false; // Accès refusé
     }
-  }  
-}  
+  }
+}
+  

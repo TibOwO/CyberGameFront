@@ -49,25 +49,26 @@ export class AuthService {
   }
 
   // Check if the user is authenticated and the token is still valid
-  isAuthenticated(): boolean {
-   // const token = localStorage.getItem('token');
-  //  if (token) {
-    //  try {
-     //   const decoded: any = jwtDecode(token);
-    //    const currentTime = Math.floor(Date.now() / 1000);
-    //    return decoded.exp > currentTime; // Checks if the token is expired
-   //   } catch (error) {
-     //   console.error('Invalid token:', error);
-     //   return false;
-    //  }
-    //}
-    return true;
+isAuthenticated(): boolean {
+  const token = localStorage.getItem('token');
+  if (token) {
+    try {
+      const decoded: any = jwtDecode(token);
+      const currentTime = Math.floor(Date.now() / 1000);
+      return decoded.exp > currentTime; // Vérifie si le token n'est pas expiré
+    } catch (error) {
+      console.error('Erreur lors de la validation du token :', error);
+      return false;
+    }
   }
+  return false; // Aucun token trouvé
+}
+
 
   forgotPassword(email: string): Observable<any> {
     return this.http.post(`${this.apiURL}/forgot-password/`, { email });
   }
-  
+
   resetPassword(uidb64: string, token: string, password: string): Observable<any> {
     return this.http.post(`${this.apiURL}/reset-password/`, { uidb64, token, new_password: password });
   }

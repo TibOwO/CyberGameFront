@@ -12,8 +12,8 @@ import { CommonModule } from '@angular/common';
 })
 export class BrowserComponent implements OnInit {
   results: Page[] = []; // Renommé en Page[] pour correspondre à l'interface utilisée
-  searchQuery: string = 'Cybersecurite';
-  addressBar: string = 'https://www.web-search.com/search?q=Cybersecurite';
+  searchQuery: string = 'Jeu du navigateur';
+  addressBar: string = 'https://www.web-search.com/search?q=Jeu+du+navigateur+Cybersecurite';
 
   constructor(private router: Router, private browserService: BrowserService) {}
 

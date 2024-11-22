@@ -32,9 +32,13 @@
         vous les aurez identifiées comme telles.
         Sinon, il faudra cliquer sur l'anomalie pour la signaler.
       </p>
+      <p>Le point rouge en haut à gauche permet de fermer la page et de revenir 
+        à la liste des pages. Les pages sont statiques et ne sont pas réelles.
+        Ainsi, les menus, les boutons et les liens ne sont pas fonctionnels.
+      </p>
       <p>
-        Faites attention aux détails et essayez de trouver toutes les anomalies
-        pour devenir un expert en cybersécurité !
+        Faites attention aux détails et essayez de trouver toutes les anomalies. 
+        Bonne chance !
       </p>
     
       <button (click)="returnToBrowser()" class="btn btn-secondary">
@@ -43,19 +47,7 @@
     </div>
 
     <!-- Contenu spécifique pour la page 2 -->
-    <div *ngIf="page.id === 2">
-      <iframe
-        src="assets/browserpic/Une-Rencontre-Chanceuse.pdf"
-        class="pdf-iframe"
-        frameborder="0"
-      ></iframe>
-      <div class="pdf-footer">
-        <button (click)="addPoint()" class="btn btn-success">Page sûre</button>
-      </div>
-    </div>
-
-    <!-- Contenu spécifique pour la page 3 -->
-    <div *ngIf="page.id === 3" class="product-page">
+    <div *ngIf="page.id === 2" class="product-page">
       <!-- Bande de navigation -->
       <div class="product-header">
         <h1 class="brand-name">SneakerZone</h1>
@@ -158,6 +150,18 @@
       </ul>
     </div>
     <p class="mentions_legales" (click)="addPoint()">Mentions Legales</p>
+  </div>
+
+  <!-- Contenu spécifique pour la page 3 -->
+  <div *ngIf="page.id === 3">
+    <iframe
+      src="assets/browserpic/Une-Rencontre-Chanceuse.pdf"
+      class="pdf-iframe"
+      frameborder="0"
+    ></iframe>
+    <div class="pdf-footer">
+      <button (click)="addPoint()" class="btn btn-success">Page sûre</button>
+    </div>
   </div>
 
 

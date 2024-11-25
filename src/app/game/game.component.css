@@ -50,4 +50,15 @@
     color: #343a40;
     margin: 0;
   }
+
+  .logout-button{
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+
   

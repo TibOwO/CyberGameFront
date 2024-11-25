@@ -41,4 +41,9 @@ export class GameComponent implements OnInit {
   navigateToApp(appName: string) {
     this.router.navigate([`/game/${appName}`]);
   }
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth/login']);
+  }
 }

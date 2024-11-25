@@ -1,25 +1,22 @@
-import { Component } from '@angular/core';
-import { OnInit } from '@angular/core';
-import { Email } from '../email.service';
-import { EmailService } from '../email.service';
-import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Email, EmailService } from '../email.service';
 import { Router } from '@angular/router';
-
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-email-app',
   standalone: true,
-  imports: [CommonModule],
+  selector: 'app-email-app',
   templateUrl: './email-app.component.html',
-  styleUrl: './email-app.component.css'
+  styleUrls: ['./email-app.component.css'],
+  imports: [CommonModule],
 })
 export class EmailAppComponent implements OnInit {
   emails: Email[] = [];
 
-  constructor(private router: Router, private emailService: EmailService) {}
+  constructor(private emailService: EmailService, private router: Router) {}
 
   ngOnInit(): void {
-    // Récupérer les emails au chargement du composant
+    // Charger les emails au démarrage
     this.emailService.getEmails().subscribe((emails: Email[]) => {
       this.emails = emails;
     });
@@ -31,7 +28,5 @@ export class EmailAppComponent implements OnInit {
 
   returnToDesk() {
     this.router.navigate([`/game`]);
-
   }
-  
 }

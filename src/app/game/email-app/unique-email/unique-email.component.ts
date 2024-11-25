@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { EmailService, Email } from '../../email.service';
 import { Router } from '@angular/router';
@@ -9,9 +9,9 @@ import { CommonModule, DatePipe } from '@angular/common';
   standalone: true,
   templateUrl: './unique-email.component.html',
   styleUrls: ['./unique-email.component.css'],
-  imports: [DatePipe, CommonModule]
+  imports: [DatePipe, CommonModule],
 })
-export class UniqueEmailComponent {
+export class UniqueEmailComponent implements OnInit {
   email?: Email;
 
   constructor(
@@ -22,10 +22,8 @@ export class UniqueEmailComponent {
 
   ngOnInit(): void {
     const emailId = this.route.snapshot.paramMap.get('emailId');
-    
-    console.log(emailId);
     if (emailId) {
-      this.emailService.getEmailById(parseInt(emailId)).subscribe((email) => {
+      this.emailService.getEmailById(parseInt(emailId, 10)).subscribe((email) => {
         this.email = email;
       });
     }

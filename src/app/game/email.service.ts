@@ -1,63 +1,31 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 export interface Email {
   id: number;
   sender: string;
-  subject: string;
+  object: string; // Correspond au sujet de l'email
   content: string;
   date: string;
-  attachments: Array<{ filename: string; size: string; type: string }>;
-  read: boolean;
-  important: boolean;
+  attachments: Array<{ url: string; name: string }>;
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EmailService {
+  private apiUrl = 'http://127.0.0.1:8000/jeux-email/';
 
-  // Simuler une liste d'emails détaillés
-  private emails: Email[] = [
-    {
-      id: 1,
-      sender: 'john.doe@example.com',
-      subject: 'Welcome to Cybersecurity ',
-      content: 'This is a welcome email.',
-      date: '2024-11-14T10:30:00',
-      attachments: [{ filename: 'welcome.pdf', size: '2MB', type: 'application/pdf' }],
-      read: false,
-      important: true
-    },
-    {
-      id: 2,
-      sender: 'phishing@example.com',
-      subject: 'Urgent: Your account is at risk!',
-      content: 'Please click the link to secure your account.',
-      date: '2024-11-13T15:20:00',
-      attachments: [],
-      read: true,
-      important: false
-    }
-    // Ajouter plus d'emails pour le test
-  ];
+  constructor(private http: HttpClient) {}
 
-  constructor() { }
-
-  // Récupérer la liste de tous les emails
+  // Récupérer la liste des emails depuis l'API
   getEmails(): Observable<Email[]> {
-    return of(this.emails);
+    return this.http.get<Email[]>(this.apiUrl);
   }
 
-  // Récupérer un email par son ID
-  getEmailById(emailId: number): Observable<Email | undefined> {
-    const email = this.emails.find(email => email.id === emailId);
-    if (!email) {
-      console.error(`Email with ID ${emailId} not found`);
-    } else {
-      console.log(email);
-    }
-    console.log(email);
-    return of(email);
+  // Récupérer un email par son ID (si besoin dans d'autres fonctionnalités)
+  getEmailById(emailId: number): Observable<Email> {
+    return this.http.get<Email>(`${this.apiUrl}${emailId}/`);
   }
 }

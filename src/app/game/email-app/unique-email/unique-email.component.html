@@ -1,6 +1,6 @@
 <div class="email-details">  
   <div *ngIf="email" class="email-details-container">
-    <h2>{{ email.subject }}</h2>
+    <h2>{{ email.object }}</h2> <!-- Utilisation du champ "object" pour le sujet -->
     <p><strong>De :</strong> {{ email.sender }}</p>
     <p><strong>Date :</strong> {{ email.date | date: 'short' }}</p>
     <p>{{ email.content }}</p>
@@ -8,10 +8,10 @@
   <p *ngIf="!email">Chargement de l'email...</p>
 
   <div *ngIf="email && email.attachments.length > 0">
-    <h3>Attachments:</h3>
+    <h3>Pièces jointes :</h3>
     <ul>
       <li *ngFor="let attachment of email.attachments">
-        {{ attachment.filename }} ({{ attachment.size }})
+        <a [href]="attachment.url" target="_blank">{{ attachment.name }}</a> <!-- Affichage du nom avec un lien -->
       </li>
     </ul>
   </div>

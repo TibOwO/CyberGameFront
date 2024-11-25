@@ -9,20 +9,23 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./password-checker.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule],
-
 })
 export class PasswordCheckerComponent {
   password: string = '';
   passwordStrength: string = '';
   score: number = 0;
-  feedback: string = '';
+  crackTime: string = '';
 
   checkPasswordStrength() {
     const result = zxcvbn(this.password);
     this.score = result.score;
     this.passwordStrength = this.getStrengthLabel(result.score);
-    this.feedback = result.feedback.suggestions.join(' ');
+  
+    // Assurez-vous que crackTime est toujours une chaîne
+    const crackTimeEstimate = result.crack_times_display.offline_slow_hashing_1e4_per_second;
+    this.crackTime = typeof crackTimeEstimate === 'string' ? crackTimeEstimate : crackTimeEstimate.toString();
   }
+  
 
   getStrengthLabel(score: number): string {
     switch (score) {

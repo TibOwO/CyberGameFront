@@ -18,3 +18,8 @@
 
   <button (click)="returnToInbox()" class="btn btn-secondary">Retour à la boîte de réception</button>
 </div>
+
+<!-- boutons permettant a l'utilisateur de dire si cet email est un mail de fishing ou non-->
+<div class="email-details">
+  <button (click)="isFishing(false)" class="btn btn-secondary">Fishing</button>
+  <button (click)="isFishing(true)" class="btn btn-secondary">Not Fishing</button>

@@ -28,4 +28,9 @@ export class EmailService {
   getEmailById(emailId: number): Observable<Email> {
     return this.http.get<Email>(`${this.apiUrl}${emailId}/`);
   }
+
+  addPoints(emailId: number, playerResponse: boolean, playerUsername: string): Observable<any> {
+    // Ajouter des points à l'utilisateur
+    return this.http.post(`${this.apiUrl}add-points-emails/`, { emailId });
+  }
 }

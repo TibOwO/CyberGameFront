@@ -1,5 +1,3 @@
-// src/app/core/interceptors/auth.interceptor.ts
-
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
@@ -14,9 +12,13 @@ export class AuthInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
     console.log('Token:', token);
+
     const cloned = req.clone({
       setHeaders: {
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
+        'X-Content-Type-Options': 'nosniff',
+        'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+        'Content-Security-Policy': "default-src 'self';"
       }
     });
 
@@ -27,7 +29,12 @@ export class AuthInterceptor implements HttpInterceptor {
             switchMap(() => {
               const newToken = localStorage.getItem('token');
               const clonedRequest = req.clone({
-                setHeaders: { Authorization: `Bearer ${newToken}` }
+                setHeaders: { 
+                  Authorization: `Bearer ${newToken}`,
+                  'X-Content-Type-Options': 'nosniff',
+                  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
+                  'Content-Security-Policy': "default-src 'self';"
+                }
               });
               return next.handle(clonedRequest);
             })
@@ -38,3 +45,5 @@ export class AuthInterceptor implements HttpInterceptor {
     );
   }
 }
+
+

@@ -3,47 +3,33 @@ import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent, HttpErrorResponse
 import { Observable, throwError } from 'rxjs';
 import { AuthService } from '../../auth/services/auth.service';
 import { catchError, switchMap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem('token');
-    console.log('Token:', token);
-
     const cloned = req.clone({
+      withCredentials: true, // Ajouter cette option
       setHeaders: {
-        Authorization: `Bearer ${token}`,
         'X-Content-Type-Options': 'nosniff',
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
         'Content-Security-Policy': "default-src 'self';"
       }
     });
-
+  
     return next.handle(cloned).pipe(
       catchError((error: HttpErrorResponse) => {
-        if (error.status === 401 && localStorage.getItem('refresh_token')) {
+        if (error.status === 401) {
           return this.authService.refreshToken().pipe(
-            switchMap(() => {
-              const newToken = localStorage.getItem('token');
-              const clonedRequest = req.clone({
-                setHeaders: { 
-                  Authorization: `Bearer ${newToken}`,
-                  'X-Content-Type-Options': 'nosniff',
-                  'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
-                  'Content-Security-Policy': "default-src 'self';"
-                }
-              });
-              return next.handle(clonedRequest);
-            })
+            switchMap(() => next.handle(req))
           );
         }
         return throwError(error);
       })
     );
   }
+  
 }
-
-

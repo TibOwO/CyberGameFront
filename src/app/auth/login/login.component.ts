@@ -31,9 +31,8 @@ export class LoginComponent {
     this.authService.login(credentials).subscribe(
       (response) => {
         console.log('User logged in successfully', response);
-        localStorage.setItem('token', response.access);  // Stocke le jeton d'accès dans le stockage local
-        localStorage.setItem('refresh_token', response.refresh);
-        localStorage.setItem('username', response.username);
+        console.log('reponse', response);
+        //log cookie
         this.router.navigate(['/game']);  // Redirige vers la page du jeu après une connexion réussie
       },
       (error) => {

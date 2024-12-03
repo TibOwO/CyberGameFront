@@ -18,6 +18,11 @@ export class LoginComponent {
 
   constructor(private router: Router, private authService: AuthService) {}
 
+
+  ngOnInit() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+  }
   onSubmit() {
     const credentials = {
       username_or_email: this.username_or_email,

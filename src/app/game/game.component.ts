@@ -42,7 +42,9 @@ export class GameComponent implements OnInit {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('refresh_token');
+    localStorage.removeItem('username');
     this.router.navigate(['/auth/login']);
   }
 }

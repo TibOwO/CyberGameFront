@@ -60,7 +60,7 @@ export class AuthService {
       try {
         const decoded: any = jwtDecode(token);
         const currentTime = Math.floor(Date.now() / 1000);
-        return of(decoded.exp > currentTime);
+        return this.verifyAuthStatus(); // Appel serveur pour vérifier l'authentification
       } catch (error) {
         console.error('Erreur lors de la validation du token :', error);
         return of(false);

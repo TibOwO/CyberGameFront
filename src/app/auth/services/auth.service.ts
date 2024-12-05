@@ -20,7 +20,7 @@ export class AuthService {
         // Stockage des tokens dans le localStorage
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('refresh_token', response.refresh_token);
-
+        localStorage.setItem('username', response.username);
         console.log('Access Token:', response.access_token);
         console.log('Refresh Token:', response.refresh_token);
       })
@@ -37,7 +37,7 @@ export class AuthService {
   refreshToken(): Observable<any> {
     const refreshToken = localStorage.getItem('refresh_token');
     if (refreshToken) {
-      return this.http.post(`${this.apiURL}/token/refresh/`, { refresh: refreshToken }, { withCredentials: true }).pipe(
+      return this.http.post(`${this.apiURL}api/token/refresh/`, { refresh: refreshToken }, { withCredentials: true }).pipe(
         tap((response: any) => {
           if (response.access) {
             localStorage.setItem('access_token', response.access);
@@ -107,6 +107,6 @@ export class AuthService {
   // Effacer les tokens des cookies
   clearTokens(): void {
     localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
+    //localStorage.removeItem('refresh_token');
   }
 }

@@ -22,6 +22,7 @@ export class LoginComponent {
   ngOnInit() {
     localStorage.removeItem('access_token');
     localStorage.removeItem('refresh_token');
+    console.log('Tokens removed in login component');
   }
   onSubmit() {
     const credentials = {

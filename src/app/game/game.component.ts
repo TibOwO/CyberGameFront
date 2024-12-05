@@ -31,7 +31,7 @@ export class GameComponent implements OnInit {
       },
       (error) => {
         console.error('Erreur lors de la récupération des infos utilisateur', error);
-        this.errorMessage = 'Impossible de récupérer les informations utilisateur.';
+        this.errorMessage = 'Impossible de récupérer les informations utilisateur';
         this.loading = false;
       }
     );

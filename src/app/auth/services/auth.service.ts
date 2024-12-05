@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
@@ -52,21 +52,33 @@ export class AuthService {
   }
   
 
-  // Vérifier si l'utilisateur est authentifié avec les cookies
+  
   isAuthenticated(): Observable<boolean> {
     const token = localStorage.getItem('access_token');
     console.log('Token :', token);
     if (token) {
       try {
         const decoded: any = jwtDecode(token);
-        const currentTime = Math.floor(Date.now() / 1000);
-        return this.verifyAuthStatus(); // Appel serveur pour vérifier l'authentification
+        const currentTime = Math.floor(Date.now() / 1000); // Temps actuel en secondes
+        // Vérifier si le token est expiré
+        if (decoded.exp < currentTime) {
+          console.error('Token expiré');
+          return this.refreshToken().pipe(
+            tap(() => console.log('Token renouvelé avec succès')),
+            catchError((error) => {
+              console.error('Échec du renouvellement du token :', error);
+              return of(false); // Retourner une réponse d'échec
+            })
+          );
+        }
+        return this.verifyAuthStatus(); // Appel serveur pour vérifier le token
       } catch (error) {
         console.error('Erreur lors de la validation du token :', error);
         return of(false);
       }
     }
-    return this.verifyAuthStatus(); // Appel serveur pour vérifier l'authentification
+    // Pas de token trouvé
+    return of(false);
   }
 
   // Vérifier l'état de l'authentification côté serveur

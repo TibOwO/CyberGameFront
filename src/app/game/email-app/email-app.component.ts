@@ -16,11 +16,16 @@ export class EmailAppComponent implements OnInit {
   constructor(private emailService: EmailService, private router: Router) {}
 
   ngOnInit(): void {
-    // Charger les emails au démarrage
-    this.emailService.getEmails().subscribe((emails: Email[]) => {
-      this.emails = emails;
+    this.emailService.getEmails().subscribe({
+      next: (emails: Email[]) => {
+        this.emails = emails;
+      },
+      error: () => {
+        alert('Erreur lors du chargement des emails.');
+      },
     });
   }
+  
 
   openEmail(emailId: number) {
     this.router.navigate([`/game/email/${emailId}`]);

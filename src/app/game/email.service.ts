@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Email {
   id: number;
   sender: string;
-  object: string; // Correspond au sujet de l'email
+  object: string; // Subject of the email
   content: string;
   date: string;
   attachments: Array<{ url: string; name: string }>;
@@ -19,18 +19,29 @@ export class EmailService {
 
   constructor(private http: HttpClient) {}
 
-  // Récupérer la liste des emails depuis l'API
+  // Get the list of emails from the API
   getEmails(): Observable<Email[]> {
     return this.http.get<Email[]>(this.apiUrl);
   }
 
-  // Récupérer un email par son ID (si besoin dans d'autres fonctionnalités)
+  // Get a single email by its ID
   getEmailById(emailId: number): Observable<Email> {
     return this.http.get<Email>(`${this.apiUrl}${emailId}/`);
   }
 
-  addPoints(emailId: number, playerResponse: boolean, playerUsername: string): Observable<any> {
-    // Ajouter des points à l'utilisateur
-    return this.http.post(`${this.apiUrl}add-points-emails/`, { emailId });
+  // Verify user response and add points
+  verifyResponse(emailId: number, username: string, userResponse: boolean): Observable<{ message: string; success: boolean; answer: boolean }> {
+    const token = localStorage.getItem('access_token'); 
+  
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`,
+    });
+  
+    return this.http.post<{ message: string; success: boolean; answer: boolean }>(
+      `${this.apiUrl}verify-email/`,
+      { emailId, isFishing: userResponse, username },
+      { headers }
+    );
   }
+  
 }

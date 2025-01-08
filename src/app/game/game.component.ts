@@ -47,4 +47,16 @@ export class GameComponent implements OnInit {
     localStorage.removeItem('username');
     this.router.navigate(['/auth/login']);
   }
+
+  reinitialiserPointsQuestion() {
+    this.userService.reinitialiserPointsQuestion().subscribe(
+      (data) => {
+        this.fetchUserInfo();
+      },
+      (error) => {
+        console.error('Erreur lors de la réinitialisation des points de question', error);
+        this.errorMessage = 'Impossible de réinitialiser les points de question';
+      }
+    );
+  }
 }

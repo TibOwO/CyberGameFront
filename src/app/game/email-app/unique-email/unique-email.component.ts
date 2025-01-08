@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EmailService, Email } from '../../email.service';
-import { Router } from '@angular/router';
 import { CommonModule, DatePipe } from '@angular/common';
 
 @Component({
@@ -18,7 +17,7 @@ export class UniqueEmailComponent implements OnInit {
     private emailService: EmailService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const emailId = this.route.snapshot.paramMap.get('emailId');
@@ -34,24 +33,32 @@ export class UniqueEmailComponent implements OnInit {
   }
 
   isFishing(userResponse: boolean) {
-    const emailId = this.email?.id || 0; // Valeur par défaut si this.email?.id est undefined
+    const emailId = this.email?.id;
     const username = localStorage.getItem('username') || 'NoUsername';
 
-    // Appeler le service pour vérifier et ajouter des points
-    this.emailService.addPoints(emailId, userResponse, username).subscribe(
-      (response: any) => {
-        // Vérifie si la réponse indique un succès
-        if (response && response.status === 200 && response.success) {
-          alert('Bonne réponse ! Vous avez gagné un point.');
+    if (!emailId) {
+      alert('Impossible de soumettre la réponse : ID email invalide.');
+      return;
+    }
+
+    this.emailService.verifyResponse(emailId, username, userResponse).subscribe({
+      
+      next: (response) => {
+        if (response.message === 'Vous avez déjà répondu à cet email.') {
+          alert('Vous avez déjà répondu à cette question.');
+        } else if (response.message === 'Bonne réponse !') {
+          alert('Bravo ! Vous avez évité le phishing. Vous avez gagné 10 points.');
+        } else if (response.message === 'Mauvaise réponse !') {
+          alert('Dommage ! Vous avez été victime de phishing. Vous avez perdu 10 points.');
         } else {
-          alert('Mauvaise réponse. Essayez encore !');
+          alert('Erreur : erreur inconnue.');
         }
       },
-      (error) => {
-        // En cas d'erreur lors de l'appel API
-        console.error('Erreur lors de l\'ajout de points:', error);
-        alert('Une erreur est survenue, veuillez réessayer.');
-      }
-    );
+
+      error: (error) => {
+        alert('Erreur lors de la vérification de la réponse.');
+        console.error('Erreur lors de la vérification de la réponse :', error);
+      },
+    });
   }
 }

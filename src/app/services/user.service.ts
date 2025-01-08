@@ -16,4 +16,11 @@ export class UserService {
     console.log(localStorage.getItem('username'));
     return this.http.get<any>(`${this.apiUrl}/get-user/${localStorage.getItem('username')}`, { headers });
   }
+
+  //sécuriser ce truc pitie
+  reinitialiserPointsQuestion(): Observable<any> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post<any>(`${this.apiUrl}/jeux-email/empty-user-answers/`, {}, { headers });
+  }
 }

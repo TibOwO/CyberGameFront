@@ -1,5 +1,5 @@
 <div class="desktop-container">
-  
+  <button class="reinitialize-button" (click)="reinitialiserPointsQuestion()">Reinitialiser Points</button>
   <button class="logout-button" (click)="logout()">Se déconnecter</button>
   <h1>Serious Game CyberSecurite</h1>
 
@@ -8,6 +8,9 @@
   <div *ngIf="!loading && userInfo" class="user-info">
     <h3>Bienvenue {{ userInfo.username }}</h3>
   </div>
+  <!-- Afficher les Points -->
+  <div *ngIf="!loading && userInfo" class="user-info">
+    <h3>Points : {{ userInfo.points }}</h3>
   <div *ngIf="!loading && errorMessage" class="error-message">
     {{ errorMessage }}
   </div>

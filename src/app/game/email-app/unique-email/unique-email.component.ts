@@ -49,7 +49,7 @@ export class UniqueEmailComponent implements OnInit {
         } else if (response.message === 'Bonne réponse !') {
           alert('Bravo ! Vous avez évité le phishing. Vous avez gagné 10 points.');
         } else if (response.message === 'Mauvaise réponse !') {
-          alert('Dommage ! Vous avez été victime de phishing. Vous avez perdu 10 points.');
+          alert('Dommage ! Vous avez été victime de phishing. Vous avez perdu 5 points.');
         } else {
           alert('Erreur : erreur inconnue.');
         }

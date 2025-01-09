@@ -28,7 +28,7 @@ export class QuizzComponent implements OnInit {
   loadQuestions(): void {
     this.quizzService.getQuestions().subscribe(
       (data) => {
-        this.questions = data;
+        this.questions = [data];
         console.log(this.questions);
       },
       (error) => {

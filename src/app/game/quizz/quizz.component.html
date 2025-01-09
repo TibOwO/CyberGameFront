@@ -1,16 +1,14 @@
 <div class="quizz-container">
   <h1>Quizz Angular</h1>
-
   <!-- Affiche une erreur s'il y en a -->
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
 
-  <!-- Affiche le quiz s'il y a des questions -->
-  <div>
+  <div *ngIf="questions.length > 0">
     <p>Question {{ currentQuestionIndex + 1 }} sur {{ questions.length }}</p>
     <h3>{{ questions[currentQuestionIndex]?.question }}</h3>
-
+  
     <ul class="options">
       <li
         *ngFor="let option of questions[currentQuestionIndex]?.options; let i = index"
@@ -20,7 +18,12 @@
         {{ option?.text }} <!-- Affiche le texte de l'option -->
       </li>
     </ul>
-
+  
     <button [disabled]="selectedOption === null" (click)="nextQuestion()">Suivant</button>
   </div>
-
+  
+  <!-- Display message when no questions are available -->
+  <div *ngIf="questions.length === 0 || questions.length === null ">
+    <p>Chargement des questions...</p>
+  </div>
+  

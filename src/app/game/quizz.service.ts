@@ -19,7 +19,7 @@ export class QuizzService {
   submitAnswers(answers: { questionId: number; answer: string }[]): Observable<any> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.post<any>(`${this.apiUrl}/quiz/validate/`, { answers }, { headers });
+    return this.http.post<any>(`${this.apiUrl}/quiz/submit/`, { answers }, { headers });
   }
   
 }

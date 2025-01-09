@@ -19,6 +19,8 @@ export class BrowserPageComponent {
     private browserService: BrowserService
   ) {}
 
+  catImages: string[] = [];
+
   ngOnInit(): void {
     const pageId = this.route.snapshot.paramMap.get('pageId');
     console.log(pageId);
@@ -26,6 +28,11 @@ export class BrowserPageComponent {
       this.browserService.getPageById(parseInt(pageId)).subscribe((page) => {
         this.page = page;
       });
+    }
+    if (this.page?.id === 5) {
+      for (let i = 1; i <= 12; i++) {
+        this.catImages.push(`assets/browserpic/chat_browser/chat${i}.jpg`);
+      }
     }
   }
 
@@ -36,4 +43,7 @@ export class BrowserPageComponent {
   addPoint(): void {
     console.log('Point ajouté');
   }
+
 }
+
+

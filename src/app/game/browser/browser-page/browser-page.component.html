@@ -158,15 +158,53 @@
       </ul>
     </div>
     <p class="mentions_legales" (click)="addPoint()">Mentions Legales</p>
+    <button class="btn btn-unsuccess">Page sûre</button>
   </div>
 
+  <div *ngIf="page.id === 4" class="google-login-page">
+    <div class="login-container">
+      <h1>Connexion à votre compte Google</h1>
+      <form>
+        <label for="email">Adresse e-mail ou numéro de téléphone</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Adresse e-mail ou numéro de téléphone"
+          required
+        />
+        <p>
+          <a href="javascript:void(0)">Vous avez oublié votre adresse e-mail ?</a>
+        </p>
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" placeholder="Mot de passe" required />
+        <p>
+          <a href="javascript:void(0)">Vous avez oublié votre mot de passe ?</a>
+        </p>
+        <button type="submit" class="btn-login">Se connecter</button>
+        <p class="create-account">
+          Pas de compte ? <a href="javascript:void(0)">Créer un compte</a>
+        </p>
+      </form>
+      <button class="btn btn-unsuccess">Page sûre</button>
+    </div>
+  </div>
+  
+  <div *ngIf="page.id === 5" class="cat-gallery">
+    <h1>Galerie de Chats Mignons</h1>
+    <div class="gallery-container">
+      <div *ngFor="let catImage of catImages" class="gallery-item">
+        <img [src]="catImage" alt="Chat mignon" />
+      </div>
+      <button (click)="addPoint()" class="btn btn-success">Page sûre</button>
+    </div>
+  </div>
+  
 
 
     <!-- Contenu générique pour toutes les autres pages -->
-    <div *ngIf="page.id !== 1 && page.id !== 2 && page.id !== 3" class="generic-page">
+    <div *ngIf="page.id !== 1 && page.id !== 2 && page.id !== 3 && page.id !== 4 && page.id !== 5" class="generic-page">
       <h2>{{ page.title }}</h2>
       <p>{{ page.snippet }}</p>
-      <a [href]="page.link" target="_blank" class="visit-link">Explorer cette page</a>
       <button (click)="returnToBrowser()" class="btn btn-secondary">
         Retourner à la liste
       </button>

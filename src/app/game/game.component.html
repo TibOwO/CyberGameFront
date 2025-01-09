@@ -13,7 +13,9 @@
     <h3>Points : {{ userInfo.points }}</h3>
   <div *ngIf="!loading && errorMessage" class="error-message">
     {{ errorMessage }}
+    <button class="admin-button" *ngIf="userInfo?.is_staff" (click)="navigateToAdminPage()">Gestion des emails</button>
   </div>
+
 
   <!-- Section des applications -->
   <div class="app-grid" *ngIf="!loading && !errorMessage">

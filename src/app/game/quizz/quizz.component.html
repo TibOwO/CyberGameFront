@@ -1,1 +1,26 @@
-<p>quizz works!</p>
+<div class="quizz-container">
+  <h1>Quizz Angular</h1>
+
+  <!-- Affiche une erreur s'il y en a -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+
+  <!-- Affiche le quiz s'il y a des questions -->
+  <div>
+    <p>Question {{ currentQuestionIndex + 1 }} sur {{ questions.length }}</p>
+    <h3>{{ questions[currentQuestionIndex]?.question }}</h3>
+
+    <ul class="options">
+      <li
+        *ngFor="let option of questions[currentQuestionIndex]?.options; let i = index"
+        [class.selected]="i === selectedOption"
+        (click)="selectOption(i)"
+      >
+        {{ option?.text }} <!-- Affiche le texte de l'option -->
+      </li>
+    </ul>
+
+    <button [disabled]="selectedOption === null" (click)="nextQuestion()">Suivant</button>
+  </div>
+

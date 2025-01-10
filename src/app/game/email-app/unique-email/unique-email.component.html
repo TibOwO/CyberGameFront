@@ -4,7 +4,9 @@
       <h2>{{ email.object }}</h2> <!-- Utilisation du champ "object" pour le sujet -->
       <p><strong>De :</strong> {{ email.sender }}</p>
       <p><strong>Date :</strong> {{ email.date | date: 'short' }}</p>
-      <p>{{ email.content }}</p>
+      
+      <!-- Utilisez innerHTML pour afficher le contenu HTML -->
+      <p [innerHTML]="getSanitizedContent(email.content)"></p>
     </div>
     <p *ngIf="!email">Chargement de l'email...</p>
 
@@ -26,5 +28,4 @@
     <p class="fishing-response-text">Ce mail est-il un phishing ?</p>
     <button (click)="isFishing(true)" class="btn btn-secondary btn-is-fishing-true">Phishing</button>
   </div>
-  
 </div>

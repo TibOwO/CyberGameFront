@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Email, EmailService } from '../email.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   standalone: true,
@@ -13,7 +14,8 @@ import { CommonModule } from '@angular/common';
 export class EmailAppComponent implements OnInit {
   emails: Email[] = [];
 
-  constructor(private emailService: EmailService, private router: Router) {}
+  constructor(private emailService: EmailService, private router: Router, private sanitizer: DomSanitizer // Injecter DomSanitizer
+  ) {}
 
   ngOnInit(): void {
     this.emailService.getEmails().subscribe({
@@ -33,5 +35,11 @@ export class EmailAppComponent implements OnInit {
 
   returnToDesk() {
     this.router.navigate([`/game`]);
+  }
+
+  getSanitizedContent(content: string) {
+    // Nettoyer l'URL en supprimant les guillemets encodés (%22)
+    const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
+    return this.sanitizer.bypassSecurityTrustHtml(cleanedContent);
   }
 }

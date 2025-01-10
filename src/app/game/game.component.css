@@ -1,73 +1,153 @@
-.desktop-container {
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+  .desktop-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    background-color: #e8f0fe;
+    background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+    height: 100vh;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
     text-align: center;
+    
   }
-  
+
   h1 {
-    font-size: 2.5em;
-    color: #343a40;
-    margin-bottom: 40px;
+    font-size: 3em;
+    color: #1a237e;
+    margin-bottom: 20px;
+    font-family: "Montserrat", serif;
+    font-optical-sizing: auto;
+    font-weight: weight;
+    font-style: normal;
+  }
+
+  .user-info {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-bottom: 30px;
+    animation: fadeIn 0.8s ease-in-out;
   }
   
+  .user-info h2 {
+    font-size: 1.8em;
+    color: #343a40;
+    margin-bottom: 10px;
+  }
+  
+  .user-info .username {
+    color: #007bff;
+    font-weight: bold;
+  }
+  
+  .user-info .points {
+    font-size: 1.2em;
+    color: #495057;
+  }
+  
+  .user-info .points span {
+    color: #28a745;
+    font-weight: bold;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }  
+
+  .points span {
+    font-weight: bold;
+    color: #0d47a1;
+  }
+
   .app-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 800px;
   }
-  
+
   .app-item {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #ffffff;
     padding: 20px;
-    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     transition: transform 0.2s, box-shadow 0.2s;
     cursor: pointer;
-    width: 150px;
-    text-align: center;
   }
-  
+
   .app-item:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
   }
-  
+
   .app-icon {
-    width: 60px;
-    height: 60px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 10px;
   }
-  
+
   .app-item p {
-    font-size: 1.1em;
-    color: #343a40;
+    font-size: 1.2em;
+    color: #1a237e;
+    font-weight: bold;
     margin: 0;
   }
 
-  .logout-button{
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
+  .button-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
   }
 
-  .reinitialize-button{
-    background-color: #86e3ff;
-    color: #155724;
-    border: 1px solid #000000;
-    border-radius: 5px;
+  .reinitialize-button, .logout-button {
     padding: 10px 20px;
     font-size: 1em;
+    border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-bottom: 10px;
+    transition: background-color 0.3s;
+  }
+
+  .reinitialize-button {
+    background-color: #81d4fa;
+    color: #01579b;
+  }
+
+  .reinitialize-button:hover {
+    background-color: #29b6f6;
+  }
+
+  .logout-button {
+    background-color: #ef9a9a;
+    color: #b71c1c;
+  }
+
+  .logout-button:hover {
+    background-color: #e57373;
+  }
+
+  .loading-spinner {
+    font-size: 1.2em;
+    color: #616161;
+  }
+
+  .error-message {
+    color: #d32f2f;
+    font-size: 1em;
+    margin: 20px 0;
   }

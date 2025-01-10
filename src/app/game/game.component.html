@@ -1,23 +1,17 @@
 <div class="desktop-container">
-  <button class="reinitialize-button" (click)="reinitialiserPointsQuestion()">Reinitialiser Points</button>
-  <button class="logout-button" (click)="logout()">Se déconnecter</button>
-  <h1>Serious Game CyberSecurite</h1>
+  <h1>Serious Game: CyberSécurité</h1>
 
-  <!-- Afficher les informations utilisateur -->
-  <div *ngIf="loading" class="loading-spinner">Chargement des informations...</div>
+  <!-- Informations utilisateur -->
+  <div *ngIf="loading" class="loading-spinner">Chargement...</div>
   <div *ngIf="!loading && userInfo" class="user-info">
-    <h3>Bienvenue {{ userInfo.username }}</h3>
-  </div>
-  <!-- Afficher les Points -->
-  <div *ngIf="!loading && userInfo" class="user-info">
-    <h3>Points : {{ userInfo.points }}</h3>
+    <h2>Bienvenue, <span class="username">{{ userInfo.username }}</span>!</h2>
+    <p class="points">Vous avez actuellement <span>{{ userInfo.points }}</span> points.</p>
+  </div>  
   <div *ngIf="!loading && errorMessage" class="error-message">
-    {{ errorMessage }}
-    <button class="admin-button" *ngIf="userInfo?.is_staff" (click)="navigateToAdminPage()">Gestion des emails</button>
+    <p>{{ errorMessage }}</p>
   </div>
 
-
-  <!-- Section des applications -->
+  <!-- Applications -->
   <div class="app-grid" *ngIf="!loading && !errorMessage">
     <div class="app-item" (click)="navigateToApp('email-app')">
       <img src="assets/icons/mail-icon.png" alt="Mail Icon" class="app-icon">
@@ -28,12 +22,18 @@
       <p>Navigateur</p>
     </div>
     <div class="app-item" (click)="navigateToApp('password-checker')">
-      <img src="assets/icons/password-icon.png" alt="Password security checker img" class="app-icon">
-      <p>Password security checker</p>
+      <img src="assets/icons/password-icon.png" alt="Password security checker" class="app-icon">
+      <p>Vérificateur de mots de passe</p>
     </div>
     <div class="app-item" (click)="navigateToApp('quizz')">
-      <img src="assets/icons/quizz-icon.png" alt="Quizz Icon" class="app-icon">
+      <img src="assets/icons/quizz-icon.png" alt="Quiz Icon" class="app-icon">
       <p>Cyber-Quiz</p>
     </div>
+  </div>
+
+  <!-- Boutons -->
+  <div class="button-container">
+    <button class="reinitialize-button" (click)="reinitialiserPointsQuestion()">Réinitialiser les Points</button>
+    <button class="logout-button" (click)="logout()">Se déconnecter</button>
   </div>
 </div>

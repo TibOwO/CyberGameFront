@@ -1,18 +1,28 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 300vh;
+  background: #f9f9f9;
+}
+
 .email-container {
-  width: 80%;
+  width: 85%;
   max-width: 900px;
   margin: auto;
-  padding: 20px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
+  padding: 25px;
+  background: linear-gradient(to bottom, #f9f9f9, #bbdefb);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  animation: fadeIn 0.6s ease-in-out;
 }
 
 .email-container h2 {
   text-align: center;
-  color: #333;
+  color: #444;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 }
 
 .email-list {
@@ -23,16 +33,18 @@
 
 .email-item {
   padding: 15px;
-  margin: 10px 0;
-  background-color: #fff;
-  border-radius: 5px;
+  margin: 15px 0;
+  background-color: #ffffff;
+  border-radius: 8px;
   border: 1px solid #ddd;
-  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
   cursor: pointer;
 }
 
 .email-item:hover {
-  background-color: #f0f4ff;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  background-color: #f8faff;
 }
 
 .email-header {
@@ -47,7 +59,7 @@
 }
 
 .email-date {
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: #aaa;
 }
 
@@ -63,21 +75,67 @@
   color: #666;
 }
 
-.btn {
-  display: block;
-  width: 100%;
-  margin-top: 20px;
-  padding: 10px;
-  font-size: 1rem;
-  background-color: #007bff;
-  color: #fff;
+.btn-read-more {
+  background-color: transparent;
   border: none;
-  border-radius: 5px;
+  color: #007bff;
+  text-decoration: underline;
   cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s;
+  font-size: 0.9rem;
 }
 
-.btn:hover {
+.btn-read-more:hover {
+  color: #0056b3;
+}
+
+.no-emails {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #777;
+  padding: 20px;
+}
+
+.email-actions {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
   background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #218838;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }

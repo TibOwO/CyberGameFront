@@ -1,14 +1,30 @@
-<div class="email-container">
-  <h2>Boîte de réception</h2>
-  <ul class="email-list">
-    <li *ngFor="let email of emails" class="email-item" (click)="openEmail(email.id)">
-      <div class="email-header">
-        <p class="email-sender"><strong>De :</strong> {{ email.sender }}</p>
-        <p class="email-date">{{ email.date | date: 'short' }}</p>
+<div class="container">
+  <div class="email-container">
+    <h2>📧 Votre Boîte de Réception</h2>
+  
+    <!-- Affichage des emails -->
+    <ul class="email-list" *ngIf="emails.length > 0; else noEmails">
+      <li *ngFor="let email of emails" class="email-item" (click)="openEmail(email.id)">
+        <div class="email-header">
+          <p class="email-sender"><strong>De :</strong> {{ email.sender }}</p>
+          <p class="email-date">{{ email.date | date: 'short' }}</p>
+        </div>
+        <h3 class="email-subject">{{ email.object }}</h3>
+        <p class="email-content" [innerHTML]="getSanitizedContent(email.content | slice: 0: 100)"></p>
+        <button class="btn-read-more">Lire plus</button>
+      </li>
+    </ul>
+  
+    <!-- Message si aucun email -->
+    <ng-template #noEmails>
+      <div class="no-emails">
+        <p>📭 Vous n'avez aucun email pour le moment.</p>
       </div>
-      <h3 class="email-subject">{{ email.object }}</h3>
-      <p class="email-content">{{ email.content | slice: 0: 100 }}...</p>
-    </li>
-  </ul>
-  <button (click)="returnToDesk()" class="btn btn-primary">Retour au bureau</button>
+    </ng-template>
+  
+    <!-- Boutons -->
+    <div class="email-actions">
+      <button (click)="returnToDesk()" class="btn btn-primary">Retour au Bureau</button>
+    </div>
+  </div>
 </div>

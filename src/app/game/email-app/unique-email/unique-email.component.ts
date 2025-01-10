@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmailService, Email } from '../../email.service';
 import { CommonModule, DatePipe } from '@angular/common';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-unique-email',
@@ -16,7 +17,8 @@ export class UniqueEmailComponent implements OnInit {
   constructor(
     private emailService: EmailService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private sanitizer: DomSanitizer // Injecter DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -61,4 +63,12 @@ export class UniqueEmailComponent implements OnInit {
       },
     });
   }
+
+  // Créez une méthode pour "sanitiser" le contenu HTML
+  getSanitizedContent(content: string) {
+    // Nettoyer l'URL en supprimant les guillemets encodés (%22)
+    const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
+    return this.sanitizer.bypassSecurityTrustHtml(cleanedContent);
+  }
+  
 }

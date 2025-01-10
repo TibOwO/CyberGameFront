@@ -1,6 +1,5 @@
 // app.module.ts
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -11,25 +10,38 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { AuthService } from './auth/services/auth.service'; // Importer AuthService
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';  // Importez le module d'animation
+import { ToastrModule } from 'ngx-toastr';  // Importez le module ngx-toastr
+import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
+import { QuizzComponent } from './game/quizz/quizz.component';
  
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    GameComponent,
-    EmailAppComponent,
-    BrowserComponent,
+   // AppComponent,
+  //  HomeComponent,
+  //  GameComponent,
+  //  EmailAppComponent,
+  //  BrowserComponent,
+  // QuizzComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,  // Importer le module d'animation
+    CommonModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }), // Configurer ngx-toastr ic    // Configurez ngx-toastr
     AppRoutingModule, // Importer le module de routage principal
     HttpClientModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }  // Ajouter l'intercepteur
   ],
-  bootstrap: [AppComponent]
+  bootstrap: []
 })
 export class AppModule { }

@@ -1,36 +1,37 @@
 <div class="quizz-container">
-  <h1 class="title">Quizz Angular</h1>
+  <h1 class="title">Cyber-Quiz : Testez vos connaissances en cybersécurité</h1>
 
+  <!-- Points de jeu -->
   <div class="game-points">
-    <p>Points de jeu : {{ userInfo?.points }}</p>
+    <p>Points actuels : {{ userInfo?.points }}</p>
   </div>
-  
 
-  <!-- Message de succès -->
+  <!-- Messages de succès et d'erreur -->
   <div *ngIf="successMessage" class="success-message">
     {{ successMessage }}
   </div>
-
-  <!-- Message d'erreur -->
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
 
-  <!-- Chargement de la question -->
+  <!-- Chargement -->
   <div *ngIf="loading" class="loading">
-    <p>Chargement de la question...</p>
+    Chargement de la question...
   </div>
 
-  <!-- Affichage de la question -->
+  <!-- Question et options -->
   <div *ngIf="currentQuestion && !loading" class="question-card">
-    <p class="progress">
-      Questions restantes : {{ remainingQuestions }}
-    </p>
+    <div class="question-header">
+      <p class="progress">
+        Questions restantes : {{ remainingQuestions }}
+      </p>  
+    </div>
+    
     <h3 class="question-text">{{ currentQuestion.question }}</h3>
 
     <ul class="options">
-      <li
-        *ngFor="let option of currentQuestion.options"
+      <li 
+        *ngFor="let option of currentQuestion.options" 
         [class.selected]="selectedOption?.id === option.id"
         (click)="selectOption(option)"
         class="option"
@@ -39,12 +40,21 @@
       </li>
     </ul>
 
-    <button
-      class="btn-next"
+    <button 
+      class="btn-next" 
       [disabled]="!selectedOption"
       (click)="submitAnswer()"
     >
       Valider
     </button>
   </div>
+
+  <!-- Retour au menu -->
+  <button 
+    class="btn-back"
+    (click)="backToMenu()"
+  >
+    Retour au menu
+  </button>
+
 </div>

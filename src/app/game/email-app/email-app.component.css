@@ -2,14 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   width: 300vh;
   background: #f9f9f9;
 }
 
 .email-container {
   width: 85%;
-  max-width: 900px;
   margin: auto;
   padding: 25px;
   background: linear-gradient(to bottom, #f9f9f9, #bbdefb);

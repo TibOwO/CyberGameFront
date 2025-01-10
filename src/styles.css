@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&display=swap');
+
+* {
+    font-family: 'Lexend Exa', sans-serif;
+}
+
+/* Personnalisation globale des notifications */
+ngx-toastr {
+    top: 20px; /* Décalage des notifications */
+  }
+  
+  .toastr-success {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .toastr-error {
+    background-color: #f44336;
+    color: white;
+  }
+  

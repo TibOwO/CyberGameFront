@@ -1,10 +1,32 @@
-.container {
+/* Styles globaux */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Exa:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+.desktop-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  height: 100vh;
+  padding: 30px;
+  font-family: 'Lexend Exa', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 4em; /* Augmenté */
+  color: #1a237e;
+  margin-bottom: 30px; /* Augmenté */
+  font-weight: normal;
+}
+
+.login-container {
   width: 100%;
-  max-width: 400px;
+  max-width: 500px; /* Augmenté */
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px; /* Augmenté */
   border-radius: 8px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Augmenté */
   background-color: #f8f9fa;
 }
 
@@ -12,42 +34,45 @@ h2 {
   font-family: 'Roboto', sans-serif;
   color: #343a40;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px; /* Augmenté */
+  font-size: 2em; /* Augmenté */
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 25px; /* Augmenté */
 }
 
 label {
-  font-size: 14px;
+  font-size: 16px; /* Augmenté */
   color: #495057;
 }
 
-input[type="username_or_email"],
+input[id="username_or_email"],
 input[type="password"] {
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border-radius: 5px;
+  padding: 15px; /* Augmenté */
+  margin-top: 8px; /* Augmenté */
+  border-radius: 8px; /* Augmenté */
   border: 1px solid #ced4da;
   box-sizing: border-box;
+  font-size: 14px; /* Augmenté */
 }
 
-input[type="username_or_email"]:focus,
+input[id="username_or_email"]:focus,
 input[type="password"]:focus {
   outline: none;
   border-color: #80bdff;
-  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.25);
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.25); /* Augmenté */
+  font-size: 16px; /* Augmenté */
 }
 
 .btn {
   width: 100%;
-  padding: 10px;
-  font-size: 16px;
+  padding: 15px; /* Augmenté */
+  font-size: 18px; /* Augmenté */
   color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px; /* Augmenté */
   cursor: pointer;
   text-align: center;
 }
@@ -60,18 +85,24 @@ input[type="password"]:focus {
   background-color: #0056b3;
 }
 
-
 .btn-secondary {
   background-color: #777f87;
-  margin-top: 10px;
+  margin-top: 20px; /* Augmenté */
 }
 
 .btn-secondary:hover {
   background-color: #495057;
 }
 
-.btn-link{
+.btn-link {
   color: #007bff;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 20px; /* Augmenté */
+  font-size: 16px; /* Augmenté */
+}
+
+.error-message {
+  color: #d32f2f;
+  font-size: 1.2em; /* Augmenté */
+  margin: 30px 0; /* Augmenté */
 }

@@ -8,7 +8,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-game',
   standalone: true,
-  imports: [BrowserComponent, CommonModule],
+  imports: [CommonModule],
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })

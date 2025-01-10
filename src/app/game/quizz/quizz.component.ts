@@ -14,7 +14,7 @@ export class QuizzComponent implements OnInit {
   currentQuestionIndex = 0;
   selectedOption: number | null = null;
   answers: { questionId: number; answerId: number }[] = [];
-  score: number | null = null;
+  results: any;
   errorMessage = '';
 
   constructor(private quizzService: QuizzService) {}
@@ -63,8 +63,14 @@ export class QuizzComponent implements OnInit {
   submitAnswers(): void {
     this.quizzService.submitAnswers(this.answers).subscribe(
       (response) => {
-        this.score = response.score;
-      },
+        this.results = response;
+        if (this.results.message == "Mauvaise réponse.") {
+          this.errorMessage = 'Mauvaise réponse.';
+        }
+        if (this.results.message == "Bonne réponse.") {
+          this.errorMessage = 'Bonne réponse.';
+      }
+    },
       (error) => {
         this.errorMessage = 'Erreur lors de la soumission des réponses.';
         console.error(error);

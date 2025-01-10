@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 })
 export class BrowserPageComponent {
   page?: Page;
+  showPopup: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,7 +42,11 @@ export class BrowserPageComponent {
   }
 
   addPoint(): void {
-    console.log('Point ajouté');
+    this.showPopup = true;
+  }
+
+  closePopup(): void {
+    this.showPopup = false;
   }
 
 }

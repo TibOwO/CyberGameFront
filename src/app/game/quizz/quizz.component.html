@@ -1,34 +1,50 @@
 <div class="quizz-container">
   <h1 class="title">Quizz Angular</h1>
 
-  <!-- Affiche une erreur s'il y en a -->
+  <div class="game-points">
+    <p>Points de jeu : {{ userInfo?.points }}</p>
+  </div>
+  
+
+  <!-- Message de succès -->
+  <div *ngIf="successMessage" class="success-message">
+    {{ successMessage }}
+  </div>
+
+  <!-- Message d'erreur -->
   <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
   </div>
 
-  <!-- Affiche les questions si disponibles -->
-  <div *ngIf="questions.length > 0" class="question-card">
+  <!-- Chargement de la question -->
+  <div *ngIf="loading" class="loading">
+    <p>Chargement de la question...</p>
+  </div>
+
+  <!-- Affichage de la question -->
+  <div *ngIf="currentQuestion && !loading" class="question-card">
     <p class="progress">
-      Question {{ currentQuestionIndex + 1 }} sur {{ questions.length }}
+      Questions restantes : {{ remainingQuestions }}
     </p>
-    <h3 class="question-text">{{ questions[currentQuestionIndex]?.question }}</h3>
+    <h3 class="question-text">{{ currentQuestion.question }}</h3>
 
     <ul class="options">
       <li
-        *ngFor="let option of questions[currentQuestionIndex]?.options; let i = index"
-        [class.selected]="i === selectedOption"
-        (click)="selectOption(i)"
+        *ngFor="let option of currentQuestion.options"
+        [class.selected]="selectedOption?.id === option.id"
+        (click)="selectOption(option)"
         class="option"
       >
-        {{ option?.text }}
+        {{ option.text }}
       </li>
     </ul>
 
-    <button class="btn-next" [disabled]="selectedOption === null" (click)="nextQuestion()">Suivant</button>
-  </div>
-
-  <!-- Affiche un message lorsque les questions sont en cours de chargement -->
-  <div *ngIf="questions.length === 0 || questions.length === null" class="loading">
-    <p>Chargement des questions...</p>
+    <button
+      class="btn-next"
+      [disabled]="!selectedOption"
+      (click)="submitAnswer()"
+    >
+      Valider
+    </button>
   </div>
 </div>

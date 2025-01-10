@@ -13,7 +13,6 @@ export class UserService {
   getUserInfo(): Observable<any> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    console.log(localStorage.getItem('username'));
     return this.http.get<any>(`${this.apiUrl}/get-user/${localStorage.getItem('username')}`, { headers });
   }
 

@@ -21,8 +21,8 @@ export class QuizzService {
     });
   }
 
-  submitAnswers(answers: { questionId: number; answerId: number }[]): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/quiz/submit/`, { answers }, {
+  submitAnswers(payload: { questionId: number; answerId: number }): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/quiz/submit/`, payload, {
       headers: this.getHeaders(),
     });
   }

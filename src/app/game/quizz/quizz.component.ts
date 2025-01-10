@@ -13,7 +13,7 @@ export class QuizzComponent implements OnInit {
   questions: any[] = [];
   currentQuestionIndex = 0;
   selectedOption: number | null = null;
-  answers: { questionId: number; answer: string }[] = [];
+  answers: { questionId: number; answerId: number }[] = [];
   score: number | null = null;
   errorMessage = '';
 
@@ -47,16 +47,18 @@ export class QuizzComponent implements OnInit {
       const currentQuestion = this.questions[this.currentQuestionIndex];
       this.answers.push({
         questionId: currentQuestion.id,
-        answer: currentQuestion.options[this.selectedOption].text // Corrected here
+        answerId: currentQuestion.options[this.selectedOption].id // Utilisez l'ID de l'option
       });
       this.selectedOption = null;
       this.currentQuestionIndex++;
-
+  
+      // Vérifiez si toutes les questions ont été répondues
       if (this.currentQuestionIndex >= this.questions.length) {
         this.submitAnswers();
       }
     }
   }
+  
 
   submitAnswers(): void {
     this.quizzService.submitAnswers(this.answers).subscribe(

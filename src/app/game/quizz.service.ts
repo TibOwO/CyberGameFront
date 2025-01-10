@@ -16,10 +16,11 @@ export class QuizzService {
     return this.http.get<any>(`${this.apiUrl}/quiz/questions/`, { headers });
   }
 
-  submitAnswers(answers: { questionId: number; answer: string }[]): Observable<any> {
+  submitAnswers(answers: { questionId: number; answerId: number }[]): Observable<any> {
     const token = localStorage.getItem('access_token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post<any>(`${this.apiUrl}/quiz/submit/`, { answers }, { headers });
-  }
+}
+
   
 }

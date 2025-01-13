@@ -3,8 +3,9 @@
 
   <!-- Points de jeu -->
   <div class="game-points">
-    <p>Points actuels : {{ userInfo?.points }}</p>
+    <p>Points actuels : {{ gamePoints }}</p>
   </div>
+  
 
   <!-- Messages de succès et d'erreur -->
   <div *ngIf="successMessage" class="success-message">
@@ -23,7 +24,8 @@
   <div *ngIf="currentQuestion && !loading" class="question-card">
     <div class="question-header">
       <p class="progress">
-        Questions restantes : {{ remainingQuestions }}
+        Questions restantes : {{ remainingQuestions }}/{{ totalQuestions }}
+
       </p>  
     </div>
     

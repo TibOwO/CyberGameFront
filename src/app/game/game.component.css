@@ -135,6 +135,11 @@
     color: #b71c1c;
   }
 
+  .admin-button{
+    background-color: #81d4fa;
+    color: #01579b;
+  }
+
   .logout-button:hover {
     background-color: #e57373;
   }

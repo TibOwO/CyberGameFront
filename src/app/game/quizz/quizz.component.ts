@@ -39,6 +39,8 @@ export class QuizzComponent implements OnInit {
   questions: any[] = [];
   questionIndex: number = 0;
   noMoreQuestions: boolean = false;
+  totalQuestions: number = 0; // Ajout de la variable pour le total
+
 
   constructor(
     private quizzService: QuizzService,
@@ -51,6 +53,7 @@ export class QuizzComponent implements OnInit {
     this.userService.getUserInfo().subscribe(
       (data) => {
         this.userInfo = data;
+        this.gamePoints = data.points || 0; // Initialiser `gamePoints` avec les points existants de l'utilisateur
         this.loading = false;
       },
       (error) => {
@@ -61,6 +64,7 @@ export class QuizzComponent implements OnInit {
     );
     this.fetchQuestions();
   }
+  
 
   fetchQuestions(): void {
     this.loading = true;
@@ -70,8 +74,10 @@ export class QuizzComponent implements OnInit {
       (data) => {
         console.log(data);
         this.questions = data.questions;
-        this.remainingQuestions = data.remaining_questions;
         this.loading = false;
+        const [currentRemaining, total] = data.remaining_questions.split('/').map(Number);
+        this.remainingQuestions = currentRemaining;
+        this.totalQuestions = total;
         this.loadNextQuestion();
       },
       (error) => {
@@ -103,19 +109,19 @@ export class QuizzComponent implements OnInit {
         questionId: this.currentQuestion.id,
         answerId: this.selectedOption.id,
       };
-
+  
       this.quizzService.submitAnswers(payload).subscribe(
         (response) => {
           console.log(response);
-          this.gamePoints = response.points;
-
+          this.gamePoints = response.gamePoints; // Ajouter les points retournés à `gamePoints`
+  
           const result = response.results[0]; // Chaque requête ne retourne qu'un seul résultat
           if (result?.correct) {
             this.showSuccess(result?.message); // Notification de succès
           } else {
             this.showError(result?.message); // Notification d'erreur
           }
-
+          this.remainingQuestions--; // Décrémenter le compteur des questions restantes
           this.selectedOption = null;
           this.questionIndex++;
           this.loadNextQuestion(); // Charger la question suivante ou terminer le quiz
@@ -128,6 +134,7 @@ export class QuizzComponent implements OnInit {
       );
     }
   }
+    
 
   // Fonction pour afficher la notification de succès
   showSuccess(message: string): void {

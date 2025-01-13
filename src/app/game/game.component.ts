@@ -59,7 +59,6 @@ export class GameComponent implements OnInit {
       }
     );
   }
-  navigateToAdminPage() {
-    this.router.navigate(['/admin']);
-  }
+  
+
 }

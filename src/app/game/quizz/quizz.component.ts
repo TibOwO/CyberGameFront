@@ -73,6 +73,13 @@ export class QuizzComponent implements OnInit {
     this.quizzService.getQuestions().subscribe(
       (data) => {
         console.log(data);
+        if (data.error == 'Toutes les questions ont déjà été posées.') {
+          this.noMoreQuestions = true;
+          this.errorMessage = data.error;
+          this.loading = false;
+          this.showError(data.error);
+          return;
+        }
         this.questions = data.questions;
         this.loading = false;
         const [currentRemaining, total] = data.remaining_questions.split('/').map(Number);
@@ -81,7 +88,7 @@ export class QuizzComponent implements OnInit {
         this.loadNextQuestion();
       },
       (error) => {
-        this.errorMessage = 'Erreur lors de la récupération des questions.';
+        this.showError('Erreur lors de la récupération des questions.');
         this.loading = false;
         console.error(error);
       }
@@ -89,6 +96,12 @@ export class QuizzComponent implements OnInit {
   }
 
   loadNextQuestion(): void {
+    if (this.questions.length === 0) {
+      this.noMoreQuestions = true;
+      this.currentQuestion = null;
+      this.errorMessage = 'Aucune question trouvée.';
+      return;
+    }
     if (this.questionIndex < this.questions.length) {
       this.currentQuestion = this.questions[this.questionIndex];
     } else {

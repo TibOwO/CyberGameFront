@@ -15,7 +15,11 @@ import { ToastrModule } from 'ngx-toastr';  // Importez le module ngx-toastr
 import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { QuizzComponent } from './game/quizz/quizz.component';
- 
+import { EmailSecurityComponent } from './game/wiki/email-security/email-security.component';
+import { WebSecurityComponent } from './game/wiki/web-security/web-security.component';
+import { MobileSecurityComponent } from './game/wiki/mobile-security/mobile-security.component';
+import { SidebarComponent } from './game/wiki/sidebar/sidebar.component';
+import { WikiComponent } from './game/wiki/wiki.component';
 
 
 @NgModule({
@@ -26,6 +30,10 @@ import { QuizzComponent } from './game/quizz/quizz.component';
   //  EmailAppComponent,
   //  BrowserComponent,
   // QuizzComponent
+  EmailSecurityComponent,
+    WebSecurityComponent,
+    MobileSecurityComponent,
+    //SidebarComponent,  // Déclarez le composant Sidebar ici
   ],
   imports: [
     BrowserModule,

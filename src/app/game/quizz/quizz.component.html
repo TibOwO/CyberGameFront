@@ -43,12 +43,13 @@
     </ul>
 
     <button 
-      class="btn-next" 
-      [disabled]="!selectedOption"
-      (click)="submitAnswer()"
-    >
-      Valider
-    </button>
+    class="btn-next" 
+    [disabled]="!selectedOption || isSubmitting"
+    (click)="submitAnswer()"
+  >
+    Valider
+  </button>
+  
   </div>
 
   <!-- Retour au menu -->

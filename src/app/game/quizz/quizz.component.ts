@@ -40,6 +40,8 @@ export class QuizzComponent implements OnInit {
   questionIndex: number = 0;
   noMoreQuestions: boolean = false;
   totalQuestions: number = 0; // Ajout de la variable pour le total
+  isSubmitting: boolean = false;
+
 
 
   constructor(
@@ -116,7 +118,9 @@ export class QuizzComponent implements OnInit {
   }
 
   submitAnswer(): void {
-    if (this.selectedOption) {
+    if (this.selectedOption && !this.isSubmitting) {
+      this.isSubmitting = true; // Bloque les clics supplémentaires
+  
       const payload = {
         questionId: this.currentQuestion.id,
         answerId: this.selectedOption.id,
@@ -124,20 +128,23 @@ export class QuizzComponent implements OnInit {
   
       this.quizzService.submitAnswers(payload).subscribe(
         (response) => {
-          this.gamePoints = response.gamePoints; // Ajouter les points retournés à `gamePoints`
+          this.isSubmitting = false; // Réactive le bouton une fois la requête terminée
+          this.gamePoints = response.gamePoints;
   
-          const result = response.results[0]; // Chaque requête ne retourne qu'un seul résultat
+          const result = response.results[0];
           if (result?.correct) {
-            this.showSuccess(result?.message); // Notification de succès
+            this.showSuccess(result?.message);
           } else {
-            this.showError(result?.message); // Notification d'erreur
+            this.showError(result?.message);
           }
-          this.remainingQuestions--; // Décrémenter le compteur des questions restantes
+  
+          this.remainingQuestions--;
           this.selectedOption = null;
           this.questionIndex++;
-          this.loadNextQuestion(); // Charger la question suivante ou terminer le quiz
+          this.loadNextQuestion();
         },
         (error) => {
+          this.isSubmitting = false; // Réactive le bouton en cas d'erreur
           this.errorMessage = 'Erreur lors de la soumission de la réponse.';
           console.error(error);
           this.showError('Erreur lors de la soumission de la réponse.');

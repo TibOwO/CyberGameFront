@@ -15,6 +15,10 @@ import { PasswordCheckerComponent } from './game/password-checker/password-check
 import { BrowserPageComponent } from './game/browser/browser-page/browser-page.component';  
 import { QuizzComponent } from './game/quizz/quizz.component';
 import { WikiComponent } from './game/wiki/wiki.component';
+import { EmailSecurityComponent } from './game/wiki/email-security/email-security.component';
+import { WebSecurityComponent } from './game/wiki/web-security/web-security.component';
+import { MobileSecurityComponent } from './game/wiki/mobile-security/mobile-security.component';
+// import { SidebarComponent } from './game/wiki/sidebar/sidebar.component'; // Adaptez ce chemin si nécessaire
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -31,5 +35,12 @@ export const routes: Routes = [
     { path: 'game/password-checker', component: PasswordCheckerComponent, canActivate: [AuthGuard] },
     { path: 'game/browser/:pageId', component: BrowserPageComponent, canActivate: [AuthGuard] },
     { path: 'game/quizz', component: QuizzComponent, canActivate: [AuthGuard] },
-    { path: 'game/wiki', component: WikiComponent, canActivate: [AuthGuard] },
-];
+    { path: 'game/wiki', component: WikiComponent, children: [
+        { path: 'email-security', component: EmailSecurityComponent },
+        { path: 'web-security', component: WebSecurityComponent },
+        { path: 'mobile-security', component: MobileSecurityComponent },
+        { path: '', redirectTo: 'email-security', pathMatch: 'full' }
+      ] },
+      { path: '', redirectTo: '/wiki', pathMatch: 'full' }
+    ];
+

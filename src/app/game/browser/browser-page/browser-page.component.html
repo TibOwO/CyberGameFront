@@ -202,11 +202,13 @@
   <div *ngIf="showPopup" class="popup-overlay">
     <div class="popup-content">
       <span class="close-popup" (click)="closePopup()">✖</span>
-      <img src="assets/mascotte/mascotte1.png" alt="Popup Image" />
-      <div *ngIf="page.id === 5">
-        <p class="popup-text">
-          Votre page a été marquée comme sûre avec succès ! Continuez à explorer les autres pages pour identifier les anomalies.
-        </p>
+      <div class="popup-body">
+        <img src="assets/mascotte/mascotte1.png" alt="Popup Image" class="popup-image" />
+        <div *ngIf="page.id === 5" class="popup-text">
+          <p>
+            Votre page a été marquée comme sûre avec succès ! Continuez à explorer les autres pages pour identifier les anomalies.
+          </p>
+        </div>
       </div>
     </div>
   </div>

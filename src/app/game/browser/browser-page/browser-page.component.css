@@ -429,24 +429,43 @@
   z-index: 1000;
 }
 
-/* Contenu du popup */
+/* Contenu principal du popup */
 .popup-content {
   position: relative;
   background: white;
+  width: 80%; /* Largeur du popup */
+  max-width: 600px; /* Largeur maximale */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: left;
+  display: flex;
+  flex-direction: column; /* Alignement des enfants */
+  gap: 10px;
   animation: fadeIn 0.3s ease-out;
 }
 
-/* Image du popup */
-.popup-content img {
-  position: relative;
-  max-width: 40%;
+/* Disposition image + texte */
+.popup-body {
+  display: flex; /* Aligne les éléments en ligne */
+  align-items: center; /* Centré verticalement */
+  gap: 20px; /* Espacement entre l'image et le texte */
+}
+
+/* Image alignée à gauche */
+.popup-image {
+  max-width: 45%;
   height: auto;
   border-radius: 10px;
-  align-items: left;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte aligné à droite */
+.popup-text {
+  flex: 1; /* Le texte occupe tout l'espace restant */
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
 }
 
 /* Bouton pour fermer le popup */
@@ -472,14 +491,5 @@
   }
 }
 
-/* Texte dans le popup */
-.popup-text {
-  position: relative;
-  margin-top: 15px;
-  font-size: 16px;
-  color: #333;
-  line-height: 1.5;
-  text-align: right;
-}
 
 

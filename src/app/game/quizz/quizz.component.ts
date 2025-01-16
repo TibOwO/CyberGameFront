@@ -72,7 +72,6 @@ export class QuizzComponent implements OnInit {
     this.successMessage = '';
     this.quizzService.getQuestions().subscribe(
       (data) => {
-        console.log(data);
         if (data.error == 'Toutes les questions ont déjà été posées.') {
           this.noMoreQuestions = true;
           this.errorMessage = data.error;
@@ -125,7 +124,6 @@ export class QuizzComponent implements OnInit {
   
       this.quizzService.submitAnswers(payload).subscribe(
         (response) => {
-          console.log(response);
           this.gamePoints = response.gamePoints; // Ajouter les points retournés à `gamePoints`
   
           const result = response.results[0]; // Chaque requête ne retourne qu'un seul résultat

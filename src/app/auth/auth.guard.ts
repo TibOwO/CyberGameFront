@@ -21,8 +21,6 @@ export class AuthGuard implements CanActivate {
     // Utilisateur non authentifié, redirection vers la page de connexion
     this.router.navigate(['/auth/login'], { queryParams: { returnUrl: state.url } });
     // On retire les tokens de l'utilisateur
-    console.log('CLeaning tokens from AuthGuard');
-    //this.authService.clearTokens();
     return false; // Accès refusé
   }
 }

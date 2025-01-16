@@ -21,8 +21,6 @@ export class AuthService {
         localStorage.setItem('access_token', response.access_token);
         localStorage.setItem('refresh_token', response.refresh_token);
         localStorage.setItem('username', response.username);
-        console.log('Access Token:', response.access_token);
-        console.log('Refresh Token:', response.refresh_token);
       })
     );
   }
@@ -55,7 +53,6 @@ export class AuthService {
   
   isAuthenticated(): Observable<boolean> {
     const token = localStorage.getItem('access_token');
-    console.log('Token :', token);
     if (token) {
       try {
         const decoded: any = jwtDecode(token);

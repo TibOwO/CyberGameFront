@@ -29,15 +29,22 @@
       <img src="assets/icons/quizz-icon.png" alt="Quiz Icon" class="app-icon">
       <p>Cyber-Quiz</p>
     </div>
+    <div class="app-item" (click)="navigateToApp('wiki')">
+      <img src="assets/icons/wiki.png" alt="Wiki Icon" class="app-icon">
+      <p>Wiki</p>
+    </div>
   </div>
 
   <!-- Boutons -->
   <div class="button-container">
     <button class="reinitialize-button" (click)="reinitialiserPointsQuestion()">Réinitialiser les Points</button>
     <button class="logout-button" (click)="logout()">Se déconnecter</button>
-    <button class="admin-button" onclick="window.location.href='http://127.0.0.1:8000/admin/';">
+    <button 
+      class="admin-button" 
+      *ngIf="userInfo?.is_staff" 
+      onclick="window.location.href='http://127.0.0.1:8000/admin/';">
       Page Admin
     </button>
-    
-    </div>
+  </div>
+  
 </div>

@@ -14,6 +14,7 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
 import { PasswordCheckerComponent } from './game/password-checker/password-checker.component';
 import { BrowserPageComponent } from './game/browser/browser-page/browser-page.component';  
 import { QuizzComponent } from './game/quizz/quizz.component';
+import { WikiComponent } from './game/wiki/wiki.component';
 
 export const routes: Routes = [
     { path: 'auth/login', component: LoginComponent },
@@ -29,5 +30,6 @@ export const routes: Routes = [
     { path: 'auth/reset-password', component: ResetPasswordComponent },
     { path: 'game/password-checker', component: PasswordCheckerComponent, canActivate: [AuthGuard] },
     { path: 'game/browser/:pageId', component: BrowserPageComponent, canActivate: [AuthGuard] },
-    { path: 'game/quizz', component: QuizzComponent, canActivate: [AuthGuard] }
+    { path: 'game/quizz', component: QuizzComponent, canActivate: [AuthGuard] },
+    { path: 'game/wiki', component: WikiComponent, canActivate: [AuthGuard] },
 ];

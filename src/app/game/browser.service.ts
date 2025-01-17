@@ -32,6 +32,17 @@ export class BrowserService {
         snippet: 'poème sur une rencontre chanceuse signée d`un y',
       },
       
+      { id: 4, 
+        title: 'Connexion à votre compte google', 
+        link: 'htxps://www.google.com/?login', 
+        snippet: 'Google Account',
+      },
+      { id: 5,
+        title: 'Chat mignon',
+        link: 'https://www.chat-mignon.com',
+        snippet: 'La référence sur les chats mignons',
+      }
+        
     
   ];
 

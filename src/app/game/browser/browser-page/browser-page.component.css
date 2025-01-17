@@ -309,3 +309,187 @@
   color: #555;
   margin-top: 20px;
 }
+
+/* PAGE 4 */
+
+.google-login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f9f9f9;
+}
+
+.login-container {
+  width: 400px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+  font-size: 24px;
+  color: #333;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container label {
+  display: block;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #555;
+}
+
+.login-container input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.login-container a {
+  color: #1a73e8;
+  text-decoration: none;
+  font-size: 12px;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+.btn-login {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1a73e8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.btn-login:hover {
+  background-color: #1558b3;
+}
+
+.create-account {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+/* PAGE 5 */
+
+.cat-gallery {
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.cat-gallery h1 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* popup */
+
+/* Overlay grisé pour le fond */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Contenu principal du popup */
+.popup-content {
+  position: relative;
+  background: white;
+  width: 80%; /* Largeur du popup */
+  max-width: 600px; /* Largeur maximale */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column; /* Alignement des enfants */
+  gap: 10px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Disposition image + texte */
+.popup-body {
+  display: flex; /* Aligne les éléments en ligne */
+  align-items: center; /* Centré verticalement */
+  gap: 20px; /* Espacement entre l'image et le texte */
+}
+
+/* Image alignée à gauche */
+.popup-image {
+  max-width: 45%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Texte aligné à droite */
+.popup-text {
+  flex: 1; /* Le texte occupe tout l'espace restant */
+  text-align: left;
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Bouton pour fermer le popup */
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+  cursor: pointer;
+}
+
+/* Animation pour le popup */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+

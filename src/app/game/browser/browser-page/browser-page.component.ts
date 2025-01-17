@@ -12,12 +12,15 @@ import { CommonModule } from '@angular/common';
 })
 export class BrowserPageComponent {
   page?: Page;
+  showPopup: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private browserService: BrowserService
   ) {}
+
+  catImages: string[] = [];
 
   ngOnInit(): void {
     const pageId = this.route.snapshot.paramMap.get('pageId');
@@ -27,6 +30,11 @@ export class BrowserPageComponent {
         this.page = page;
       });
     }
+    if (this.page?.id === 5) {
+      for (let i = 1; i <= 12; i++) {
+        this.catImages.push(`assets/browserpic/chat_browser/chat${i}.jpg`);
+      }
+    }
   }
 
   returnToBrowser(): void {
@@ -34,6 +42,13 @@ export class BrowserPageComponent {
   }
 
   addPoint(): void {
-    console.log('Point ajouté');
+    this.showPopup = true;
   }
+
+  closePopup(): void {
+    this.showPopup = false;
+  }
+
 }
+
+

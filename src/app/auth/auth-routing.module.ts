@@ -10,7 +10,7 @@ import { VerifMailComponent } from './register/verif-mail/verif-mail.component';
 import { ConfirmEmailComponent } from './register/confirm-email/confirm-email.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
-const routes: Routes = [
+const routes: Routes = [ 
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

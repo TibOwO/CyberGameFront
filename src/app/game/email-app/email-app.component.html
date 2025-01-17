@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="email-container">
     <h2>📧 Votre Boîte de Réception</h2>
   
@@ -10,7 +10,7 @@
           <p class="email-date">{{ email.date | date: 'short' }}</p>
         </div>
         <h3 class="email-subject">{{ email.object }}</h3>
-        <p class="email-content" [innerHTML]="getSanitizedContent(email.content | slice: 0: 100)"></p>
+        <p class="email-content" [innerHTML]="getSanitizedContent(email.content | slice: 0: 200)"></p>
         <button class="btn-read-more">Lire plus</button>
       </li>
     </ul>
@@ -27,4 +27,3 @@
       <button (click)="returnToDesk()" class="btn btn-primary">Retour au Bureau</button>
     </div>
   </div>
-</div>

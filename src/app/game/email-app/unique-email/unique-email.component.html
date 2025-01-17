@@ -1,31 +1,28 @@
-<div>
+<div class="email-viewer">
   <div class="email-details">
     <div *ngIf="email" class="email-details-container">
-      <h2>{{ email.object }}</h2> <!-- Utilisation du champ "object" pour le sujet -->
+      <h2>{{ email.object }}</h2>
       <p><strong>De :</strong> {{ email.sender }}</p>
       <p><strong>Date :</strong> {{ email.date | date: 'short' }}</p>
-      
-      <!-- Utilisez innerHTML pour afficher le contenu HTML -->
-      <p [innerHTML]="getSanitizedContent(email.content)"></p>
+      <div class="email-content" [innerHTML]="getSanitizedContent(email.content)"></div>
     </div>
-    <p *ngIf="!email">Chargement de l'email...</p>
+    <p *ngIf="!email" class="loading">Chargement de l'email...</p>
 
-    <div *ngIf="email && email.attachments.length > 0">
+    <div *ngIf="email && email.attachments.length > 0" class="attachments">
       <h3>Pièces jointes :</h3>
       <ul>
         <li *ngFor="let attachment of email.attachments">
-          <a [href]="attachment.url" target="_blank">{{ attachment.name }}</a> <!-- Affichage du nom avec un lien -->
+          <a [href]="attachment.url" target="_blank">{{ attachment.name }}</a>
         </li>
       </ul>
     </div>
 
-    <button (click)="returnToInbox()" class="btn btn-secondary">Retour à la boîte de réception</button>
+    <button (click)="returnToInbox()" class="btn btn-primary">Retour à la boîte de réception</button>
   </div>
 
-  <!-- boutons permettant a l'utilisateur de dire si cet email est un mail de fishing ou non-->
-  <div class="email-details fishing-response">
-    <button (click)="isFishing(false)" class="btn btn-secondary btn-is-fishing-false">Pas un phishing</button>
+  <div class="fishing-response">
+    <button (click)="isFishing(false)" class="btn btn-secondary">Pas un phishing</button>
     <p class="fishing-response-text">Ce mail est-il un phishing ?</p>
-    <button (click)="isFishing(true)" class="btn btn-secondary btn-is-fishing-true">Phishing</button>
+    <button (click)="isFishing(true)" class="btn btn-secondary">Phishing</button>
   </div>
 </div>

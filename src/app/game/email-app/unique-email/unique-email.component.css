@@ -1,107 +1,132 @@
-/* Conteneur principal pour l'email */
+.email-viewer {
+  font-family: 'Arial', sans-serif;
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
 
 .email-details {
-    font-family: 'Arial', sans-serif;
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    color: #333;
-  }
-  
-  /* Conteneur du détail de l'email */
-  .email-details-container {
-    margin-bottom: 20px;
-  }
-  
-  /* Titre du sujet de l'email */
-  .email-details h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #2d3748;
-    margin-bottom: 10px;
-  }
-  
-  /* Détails de l'expéditeur et de la date */
-  .email-details p {
-    font-size: 16px;
-    color: #4a5568;
-    margin: 8px 0;
-  }
-  
-  /* Mise en gras de l'expéditeur et de la date */
-  .email-details strong {
-    color: #2d3748;
-  }
-  
-  /* Section du contenu de l'email */
-  .email-details p.content {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #2d3748;
-    margin-bottom: 20px;
-    white-space: pre-wrap; /* Gère le retour à la ligne dans le contenu */
-  }
-  
-  /* Style pour le message de chargement */
-  .email-details p.loading {
-    font-size: 18px;
-    text-align: center;
-    color: #a0aec0;
-    font-style: italic;
-  }
-  
-  /* Section des pièces jointes */
-  .email-details .attachments {
-    margin-top: 20px;
-    padding: 10px;
-    background-color: #edf2f7;
-    border-radius: 8px;
-    border: 1px solid #e2e8f0;
-  }
-  
-  .email-details .attachments h3 {
-    font-size: 20px;
-    color: #2d3748;
-    margin-bottom: 10px;
-  }
-  
-  /* Liste des pièces jointes */
-  .email-details ul {
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  .email-details li {
-    font-size: 16px;
-    color: #2d3748;
-    margin: 5px 0;
-  }
-  
-  /* Style du bouton de retour */
-  .email-details button {
-    background-color: #2b6cb0;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .email-details button:hover {
-    background-color: #2c5282;
-  }
-  
-  .email-details button:focus {
-    outline: none;
-  }
-  
-  .fishing-response{
-    display: flex;
-    gap: 30%;
-  }
+  margin-bottom: 20px;
+}
 
+.email-details h2 {
+  font-size: 26px;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 15px;
+}
+
+.email-details p {
+  font-size: 16px;
+  color: #555555;
+  margin: 8px 0;
+}
+
+.email-content {
+  font-size: 18px;
+  line-height: 1.6;
+  color: #444444;
+  margin: 15px 0 25px;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  white-space: pre-wrap;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #999999;
+  font-style: italic;
+}
+
+.attachments {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f0f4f8;
+  border-radius: 8px;
+  border: 1px solid #e0e6eb;
+}
+
+.attachments h3 {
+  font-size: 20px;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.attachments ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.attachments li {
+  font-size: 16px;
+  color: #2d3748;
+  margin: 5px 0;
+}
+
+.attachments a {
+  text-decoration: none;
+  color: #007bff;
+  transition: color 0.3s ease;
+}
+
+.attachments a:hover {
+  color: #0056b3;
+}
+
+.fishing-response {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.fishing-response .btn {
+  flex: 1;
+  max-width: 200px;
+  margin: 0 10px;
+}
+
+.fishing-response-text {
+  flex: 2;
+  text-align: center;
+  font-size: 16px;
+  color: #555555;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #218838;
+}
+
+.btn:focus {
+  outline: none;
+}

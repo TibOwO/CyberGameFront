@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  apiUrl = 'https://apidjangoseriousgame-k333.onrender.com/';
+  apiUrl = 'https://apidjangoseriousgame-k333.onrender.com';
 
   constructor(private http: HttpClient) {}
 

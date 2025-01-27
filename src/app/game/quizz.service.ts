@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class QuizzService {
-  private apiUrl = 'http://127.0.0.1:8000';
+  private apiUrl = 'https://apidjangoseriousgame-k333.onrender.com/';
 
   constructor(private http: HttpClient) {}
 

@@ -11,7 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  apiURL = 'http://127.0.0.1:8000';
+  apiURL = 'https://apidjangoseriousgame-k333.onrender.com/';
 
   // Login API call
   login(credentials: { username_or_email: string, password: string }): Observable<any> {

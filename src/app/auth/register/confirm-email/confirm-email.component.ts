@@ -25,7 +25,7 @@ export class ConfirmEmailComponent implements OnInit {
     // Récupérer le token depuis l'URL
     const token = this.route.snapshot.queryParamMap.get('token');
     if (token) {
-      this.http.get<any>(`http://127.0.0.1:8000/confirm-email?token=${token}`)
+      this.http.get<any>(`https://apidjangoseriousgame-k333.onrender.com/confirm-email?token=${token}`)
         .subscribe(
           (response) => {
             this.message = response.detail;

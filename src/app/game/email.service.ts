@@ -15,7 +15,7 @@ export interface Email {
   providedIn: 'root',
 })
 export class EmailService {
-  private apiUrl = 'http://127.0.0.1:8000/jeux-email/';
+  private apiUrl = 'https://apidjangoseriousgame-k333.onrender.com/jeux-email/';
 
   constructor(private http: HttpClient) {}
 

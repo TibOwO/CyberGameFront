@@ -4,13 +4,15 @@ import { EmailService, Email } from '../../email.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr'; // Importation de ToastrService
+import { UniqueEmailModuleModule } from './unique-email-module/unique-email-module.module'; // Importez le module UniqueEmailModuleModule
 
 @Component({
   selector: 'app-unique-email',
   standalone: true,
   templateUrl: './unique-email.component.html',
   styleUrls: ['./unique-email.component.css'],
-  imports: [DatePipe, CommonModule],
+  providers: [DatePipe, CommonModule, ToastrService], // Ajoutez le module UniqueEmailModuleModule
+  imports: [UniqueEmailModuleModule],
 })
 export class UniqueEmailComponent implements OnInit {
   email?: Email;

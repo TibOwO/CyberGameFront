@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { EmailService, Email } from '../../email.service';
 import { CommonModule, DatePipe } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr'; // Importation de ToastrService
 
 @Component({
   selector: 'app-unique-email',
@@ -18,7 +19,9 @@ export class UniqueEmailComponent implements OnInit {
     private emailService: EmailService,
     private route: ActivatedRoute,
     private router: Router,
-    private sanitizer: DomSanitizer // Injecter DomSanitizer
+    private sanitizer: DomSanitizer,
+    private toastr: ToastrService, // Injection de ToastrService
+
   ) {}
 
   ngOnInit(): void {
@@ -47,18 +50,18 @@ export class UniqueEmailComponent implements OnInit {
       
       next: (response) => {
         if (response.message === 'Vous avez déjà répondu à cet email.') {
-          alert('Vous avez déjà répondu à cette question.');
+          this.ShowInfo("Vous avez déjà répondu à cet email.");
         } else if (response.message === 'Bonne réponse !') {
-          alert('Bravo ! Vous avez évité le phishing. Vous avez gagné 10 points.');
+          this.ShowSuccess("Bravo ! Vous avez évité le phishing et gagné 10 points.");
         } else if (response.message === 'Mauvaise réponse !') {
-          alert('Dommage ! Vous avez été victime de phishing. Vous avez perdu 5 points.');
+          this.ShowError("Dommage ! Vous avez cliqué sur un lien de phishing et perdu 5 points.");
         } else {
-          alert('Erreur : erreur inconnue.');
+          this.ShowError("Erreur inconnue lors de la vérification de la réponse.");
         }
       },
 
       error: (error) => {
-        alert('Erreur lors de la vérification de la réponse.');
+        this.ShowError("Erreur inconnue lors de la vérification de la réponse.");
         console.error('Erreur lors de la vérification de la réponse :', error);
       },
     });
@@ -69,6 +72,21 @@ export class UniqueEmailComponent implements OnInit {
     // Nettoyer l'URL en supprimant les guillemets encodés (%22)
     const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
     return this.sanitizer.bypassSecurityTrustHtml(cleanedContent);
+  }
+
+  // Créez une méthode pour afficher un message de succès
+  ShowSuccess(message: string) {
+    this.toastr.success(message);
+  }
+
+  // Créez une méthode pour afficher un message d'erreur
+  ShowError(message: string) {
+    this.toastr.error(message);
+  }
+
+  // Créez une méthode pour afficher un message d'information
+  ShowInfo(message: string) {
+    this.toastr.info(message, 'Information');
   }
   
 }

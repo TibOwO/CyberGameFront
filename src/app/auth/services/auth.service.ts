@@ -3,6 +3,7 @@ import { Observable, of } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  apiURL = 'https://apidjangoseriousgame-k333.onrender.com';
+  apiURL = environment.apiURL;
 
   // Login API call
   login(credentials: { username_or_email: string, password: string }): Observable<any> {

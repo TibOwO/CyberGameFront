@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
   selector: 'app-confirm-email',
@@ -14,6 +16,7 @@ export class ConfirmEmailComponent implements OnInit {
   message: string = '';
   isLoading: boolean = true;
   isError: boolean = false;
+  api = environment.apiURL;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +28,7 @@ export class ConfirmEmailComponent implements OnInit {
     // Récupérer le token depuis l'URL
     const token = this.route.snapshot.queryParamMap.get('token');
     if (token) {
-      this.http.get<any>(`https://apidjangoseriousgame-k333.onrender.com/confirm-email?token=${token}`)
+      this.http.get<any>(`${this.api}/confirm-email?token=${token}`)
         .subscribe(
           (response) => {
             this.message = response.detail;

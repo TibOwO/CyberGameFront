@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface Email {
   id: number;
@@ -15,7 +16,7 @@ export interface Email {
   providedIn: 'root',
 })
 export class EmailService {
-  private apiUrl = 'https://apidjangoseriousgame-k333.onrender.com/jeux-email/';
+  private apiUrl = environment.apiURL + '/jeux-email/';
 
   constructor(private http: HttpClient) {}
 

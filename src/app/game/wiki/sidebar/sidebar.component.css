@@ -26,4 +26,11 @@
     background-color: #575757;
     padding: 5px;
   }
+
+  .back-icon
+  { 
+    display: flex;
+    gap: 20px;
+    margin-top: 40px;
+  }
   

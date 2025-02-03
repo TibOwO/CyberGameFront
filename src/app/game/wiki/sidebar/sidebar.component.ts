@@ -16,4 +16,8 @@ export class SidebarComponent {
     this.router.navigate(['game/wiki/' + url]);
   }
 
+  returnToDesk() {
+    this.router.navigate(['game']);
+  }
+
 }

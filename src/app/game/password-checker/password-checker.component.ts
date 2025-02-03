@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import zxcvbn from 'zxcvbn';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-password-checker',
@@ -9,12 +10,15 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./password-checker.component.css'],
   standalone: true,
   imports: [CommonModule, FormsModule],
+
 })
 export class PasswordCheckerComponent {
   password: string = '';
   passwordStrength: string = '';
   score: number = 0;
   crackTime: string = '';
+  
+  constructor(private router: Router) {}
 
   checkPasswordStrength() {
     const result = zxcvbn(this.password);
@@ -36,5 +40,8 @@ export class PasswordCheckerComponent {
       case 4: return 'Très Fort';
       default: return 'Bizarre';
     }
+  }
+  returnToDesk() {
+    this.router.navigate([`/game`]);
   }
 }

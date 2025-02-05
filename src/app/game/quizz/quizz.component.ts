@@ -81,9 +81,10 @@ export class QuizzComponent implements OnInit {
       (data) => {
         if (data.error == 'Toutes les questions ont déjà été posées.') {
           this.noMoreQuestions = true;
-          this.errorMessage = data.error;
+          this.fetchResults();
           this.loading = false;
-          this.showError(data.error);
+          this.noMoreQuestions = true;
+          this.showSuccess('Quiz terminé, voici vos résultats.');
           return;
         }
         this.questions = data.questions;

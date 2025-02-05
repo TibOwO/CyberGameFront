@@ -52,6 +52,23 @@
   
   </div>
 
+  <!-- Résultats du Quiz -->
+  <div *ngIf="showResults" class="quiz-results">
+    <h2>Résultats du Quiz</h2>
+    <p>Score total : {{ gamePoints }}</p>
+  
+    <ul class="results-list">
+      <li *ngFor="let result of quizResults" [class.correct]="result.isCorrect" [class.incorrect]="!result.isCorrect">
+        <strong>{{ result.question }}</strong><br>
+        Votre réponse : {{ result.selectedAnswer }}<br>
+        <span *ngIf="result.isCorrect" class="correct-answer">✔ Bonne réponse</span>
+        <span *ngIf="!result.isCorrect" class="incorrect-answer">✖ Mauvaise réponse</span>
+      </li>
+    </ul>
+  
+    <button class="btn-back" (click)="backToMenu()">Retour au menu</button>
+  </div>
+
   <!-- Retour au menu -->
   <button 
     class="btn-back"

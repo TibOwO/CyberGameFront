@@ -27,4 +27,11 @@ export class QuizzService {
       headers: this.getHeaders(),
     });
   }
+
+  getQuizResults(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/quiz/results/`, {
+      headers: this.getHeaders(),
+    });
+  }
+  
 }

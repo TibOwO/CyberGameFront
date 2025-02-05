@@ -31,12 +31,13 @@ import { WikiComponent } from './game/wiki/wiki.component';
   //  BrowserComponent,
   // QuizzComponent
  
-  EmailSecurityComponent,
-  WebSecurityComponent,
-  MobileSecurityComponent,
     //SidebarComponent,  // Déclarez le composant Sidebar ici
   ],
   imports: [
+    
+  EmailSecurityComponent,
+  WebSecurityComponent,
+  MobileSecurityComponent,
     BrowserModule,
     BrowserAnimationsModule,  // Importer le module d'animation
     CommonModule,

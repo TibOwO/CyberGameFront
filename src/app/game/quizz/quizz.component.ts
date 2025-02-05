@@ -41,6 +41,8 @@ export class QuizzComponent implements OnInit {
   noMoreQuestions: boolean = false;
   totalQuestions: number = 0; // Ajout de la variable pour le total
   isSubmitting: boolean = false;
+  quizResults: any[] = [];
+  showResults: boolean = false;
 
 
 
@@ -96,22 +98,33 @@ export class QuizzComponent implements OnInit {
     );
   }
 
+
+  fetchResults(): void {
+    this.quizzService.getQuizResults().subscribe(
+      (response) => {
+        this.quizResults = response.results;
+        this.gamePoints = response.totalScore;
+        this.showResults = true;
+      },
+      (error) => {
+        console.error('Erreur lors de la récupération des résultats du quiz', error);
+        this.showError('Erreur lors de la récupération des résultats.');
+      }
+    );
+  }
+
+
   loadNextQuestion(): void {
-    if (this.questions.length === 0) {
-      this.noMoreQuestions = true;
-      this.currentQuestion = null;
-      this.errorMessage = 'Aucune question trouvée.';
-      return;
-    }
     if (this.questionIndex < this.questions.length) {
       this.currentQuestion = this.questions[this.questionIndex];
     } else {
       this.currentQuestion = null;
-      this.successMessage = 'Quiz terminé !';
       this.showSuccess('Quiz terminé !');
+      this.fetchResults(); // Appel API pour afficher les résultats
       this.noMoreQuestions = true;
     }
   }
+  
 
   selectOption(option: any): void {
     this.selectedOption = option;

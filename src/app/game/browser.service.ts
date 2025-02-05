@@ -34,7 +34,7 @@ export class BrowserService {
       
       { id: 4, 
         title: 'Connexion à votre compte google', 
-        link: 'htxps://www.google.com/?login', 
+        link: 'https://www.googgle.com/?login', 
         snippet: 'Google Account',
       },
       { id: 5,

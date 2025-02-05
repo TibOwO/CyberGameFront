@@ -67,6 +67,9 @@ export class QuizzComponent implements OnInit {
       }
     );
     this.fetchQuestions();
+    if (this.noMoreQuestions) {
+      this.fetchResults();
+    }
   }
   
 

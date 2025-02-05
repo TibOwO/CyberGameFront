@@ -1,5 +1,5 @@
 export const environment = {
     production: false,
-    apiURL: 'http://127.0.0.1:8000' // URL de ton serveur Django en local
+    apiURL: 'https://apidjangoseriousgame-k333.onrender.com' // URL de ton serveur Django en local
   };
   

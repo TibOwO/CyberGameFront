@@ -11,25 +11,33 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private authService: AuthService, private router: Router) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const cloned = req.clone({
-      withCredentials: true, // Ajouter cette option
+    const cloned = this.addSecurityHeaders(req);
+    
+    return next.handle(cloned).pipe(
+      catchError((error: HttpErrorResponse) => {
+        if (error.status === 401) {
+          return this.authService.refreshToken().pipe(
+            switchMap((newToken: string) => {
+              const updatedRequest = cloned.clone({
+                setHeaders: { Authorization: `Bearer ${newToken}` }
+              });
+              return next.handle(updatedRequest);
+            })
+          );
+        }
+        return throwError(() => error);
+      })
+    );
+  }
+
+  private addSecurityHeaders(req: HttpRequest<any>): HttpRequest<any> {
+    return req.clone({
+      withCredentials: true,
       setHeaders: {
         'X-Content-Type-Options': 'nosniff',
         'Strict-Transport-Security': 'max-age=31536000; includeSubDomains',
         'Content-Security-Policy': "default-src 'self';"
       }
     });
-  
-    return next.handle(cloned).pipe(
-      catchError((error: HttpErrorResponse) => {
-        if (error.status === 401) {
-          return this.authService.refreshToken().pipe(
-            switchMap(() => next.handle(req))
-          );
-        }
-        return throwError(error);
-      })
-    );
   }
-  
 }

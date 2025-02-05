@@ -81,11 +81,6 @@ export class QuizzComponent implements OnInit {
       (data) => {
         if (data.error == 'Toutes les questions ont déjà été posées.') {
           this.noMoreQuestions = true;
-          this.fetchResults();
-          this.loading = false;
-          this.noMoreQuestions = true;
-          this.showSuccess('Quiz terminé, voici vos résultats.');
-          return;
         }
         this.questions = data.questions;
         this.loading = false;
@@ -95,9 +90,11 @@ export class QuizzComponent implements OnInit {
         this.loadNextQuestion();
       },
       (error) => {
-        this.showError('Erreur lors de la récupération des questions.');
-        this.loading = false;
-        console.error(error);
+        this.fetchResults();
+          this.loading = false;
+          this.noMoreQuestions = true;
+          this.showSuccess('Quiz terminé, voici vos résultats.');
+          return;
       }
     );
   }

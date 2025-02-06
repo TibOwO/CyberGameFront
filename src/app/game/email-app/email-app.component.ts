@@ -3,6 +3,7 @@ import { Email, EmailService } from '../email.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
+import DOMPurify from 'dompurify';
 
 @Component({
   standalone: true,
@@ -38,8 +39,9 @@ export class EmailAppComponent implements OnInit {
   }
 
   getSanitizedContent(content: string) {
-    // Nettoyer l'URL en supprimant les guillemets encodés (%22)
     const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
-    return this.sanitizer.bypassSecurityTrustHtml(cleanedContent);
+  
+    return this.sanitizer.bypassSecurityTrustHtml(DOMPurify.sanitize(cleanedContent));
+  
   }
 }

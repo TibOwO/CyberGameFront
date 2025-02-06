@@ -35,9 +35,9 @@ import { WikiComponent } from './game/wiki/wiki.component';
   ],
   imports: [
     
-  EmailSecurityComponent,
-  WebSecurityComponent,
-  MobileSecurityComponent,
+    //EmailSecurityComponent,
+    //WebSecurityComponent,
+    //MobileSecurityComponent,
     BrowserModule,
     BrowserAnimationsModule,  // Importer le module d'animation
     CommonModule,

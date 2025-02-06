@@ -5,7 +5,7 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr'; // Importation de ToastrService
 import { UniqueEmailModuleModule } from './unique-email-module/unique-email-module.module'; // Importez le module UniqueEmailModuleModule
-
+import DOMPurify from 'dompurify';
 @Component({
   selector: 'app-unique-email',
   standalone: true,
@@ -71,9 +71,9 @@ export class UniqueEmailComponent implements OnInit {
 
   // Créez une méthode pour "sanitiser" le contenu HTML
   getSanitizedContent(content: string) {
-    // Nettoyer l'URL en supprimant les guillemets encodés (%22)
     const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
-    return this.sanitizer.bypassSecurityTrustHtml(cleanedContent);
+    return this.sanitizer.bypassSecurityTrustHtml(DOMPurify.sanitize(cleanedContent));
+  
   }
 
   // Créez une méthode pour afficher un message de succès

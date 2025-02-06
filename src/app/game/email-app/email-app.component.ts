@@ -40,7 +40,6 @@ export class EmailAppComponent implements OnInit {
 
   getSanitizedContent(content: string) {
     const cleanedContent = content.replace(/%22/g, ''); // Remplacer les guillemets encodés
-  
     return this.sanitizer.bypassSecurityTrustHtml(DOMPurify.sanitize(cleanedContent));
   
   }
